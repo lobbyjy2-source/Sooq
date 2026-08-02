@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="bg-[#f8f9fa] font-sans text-gray-800 min-h-screen">
+<body class="bg-[#f8f9fa] font-sans text-gray-800 min-h-screen pb-20">
 
     <!-- Top Utility Bar -->
     <div class="bg-gray-100 border-b border-gray-200 text-xs py-2 px-4 hidden md:block">
@@ -50,7 +50,7 @@
         </div>
     </header>
 
-    <!-- Navigation Bar & Working Links -->
+    <!-- Navigation Bar -->
     <nav class="bg-white border-b border-gray-200 hidden md:block">
         <div class="max-w-7xl mx-auto px-4 flex items-center justify-between text-xs font-bold">
             <div class="flex items-center gap-8">
@@ -60,56 +60,85 @@
                 <a href="index.html" class="text-amber-600 py-3 border-b-2 border-amber-500">الرئيسية</a>
                 <a href="categories.html" class="text-gray-600 hover:text-amber-600 py-3">الأقسام</a>
                 <a href="#" class="text-gray-600 hover:text-amber-600 py-3">عروض اليوم</a>
-                <a href="#" class="text-gray-600 hover:text-amber-600 py-3">المتجر</a>
                 <a href="add-ad.html" class="text-amber-600 hover:text-amber-700 py-3">إضافة إعلان</a>
                 <a href="blog.html" class="text-gray-600 hover:text-amber-600 py-3">المدونة</a>
-                <a href="#" class="text-gray-600 hover:text-amber-600 py-3">تواصل معنا</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section & Sidebar Categories -->
+    <!-- Main Content -->
     <main class="max-w-7xl mx-auto px-4 py-6">
-        <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
-            
-            <!-- Sidebar Categories -->
-            <div class="hidden lg:block bg-white border border-gray-200 rounded-2xl p-4 text-xs font-bold space-y-3">
-                <div class="text-gray-400 font-bold mb-2 pb-2 border-b border-gray-100">الأقسام الرئيسية</div>
-                <a href="categories.html" class="flex justify-between items-center p-2 hover:bg-gray-50 rounded-lg text-gray-700"><span><i class="fa-solid fa-laptop text-amber-500 ml-2"></i> الإلكترونيات</span><i class="fa-solid fa-chevron-left text-[10px] text-gray-400"></i></a>
-                <a href="categories.html" class="flex justify-between items-center p-2 hover:bg-gray-50 rounded-lg text-gray-700"><span><i class="fa-solid fa-house text-amber-500 ml-2"></i> المنزل والمطبخ</span><i class="fa-solid fa-chevron-left text-[10px] text-gray-400"></i></a>
-                <a href="categories.html" class="flex justify-between items-center p-2 hover:bg-gray-50 rounded-lg text-gray-700"><span><i class="fa-solid fa-shirt text-amber-500 ml-2"></i> الأزياء والملابس</span><i class="fa-solid fa-chevron-left text-[10px] text-gray-400"></i></a>
-                <a href="categories.html" class="flex justify-between items-center p-2 hover:bg-gray-50 rounded-lg text-gray-700"><span><i class="fa-solid fa-mobile-screen text-amber-500 ml-2"></i> الجوالات والأجهزة</span><i class="fa-solid fa-chevron-left text-[10px] text-gray-400"></i></a>
-                <a href="categories.html" class="flex justify-between items-center p-2 hover:bg-gray-50 rounded-lg text-gray-700"><span><i class="fa-solid fa-car text-amber-500 ml-2"></i> السيارات وقطع الغيار</span><i class="fa-solid fa-chevron-left text-[10px] text-gray-400"></i></a>
-                <a href="categories.html" class="flex justify-between items-center p-2 hover:bg-gray-50 rounded-lg text-gray-700"><span><i class="fa-solid fa-heart-pulse text-amber-500 ml-2"></i> الجمال والصحة</span><i class="fa-solid fa-chevron-left text-[10px] text-gray-400"></i></a>
-                <a href="categories.html" class="flex justify-between items-center p-2 hover:bg-gray-50 rounded-lg text-gray-700"><span><i class="fa-solid fa-dumbbell text-amber-500 ml-2"></i> الرياضة واللياقة</span><i class="fa-solid fa-chevron-left text-[10px] text-gray-400"></i></a>
-                <a href="categories.html" class="flex justify-between items-center p-2 hover:bg-gray-50 rounded-lg text-gray-700"><span><i class="fa-solid fa-gamepad text-amber-500 ml-2"></i> الأطفال والألعاب</span><i class="fa-solid fa-chevron-left text-[10px] text-gray-400"></i></a>
-            </div>
+        
+        <!-- Grid of All Categories (Like OpenSooq) -->
+        <div class="mb-10">
+            <h2 class="text-base font-black text-gray-900 mb-4">أقسام السوق</h2>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 text-center">
+                
+                <!-- Category 1 -->
+                <a href="categories.html" class="bg-white border border-gray-200 hover:border-amber-500 p-4 rounded-2xl flex flex-col items-center justify-center gap-2 transition shadow-sm hover:shadow-md">
+                    <i class="fa-solid fa-mobile-screen text-2xl text-amber-500"></i>
+                    <span class="text-xs font-bold text-gray-800">موبايل و تابلت</span>
+                </a>
+                <!-- Category 2 -->
+                <a href="categories.html" class="bg-white border border-gray-200 hover:border-amber-500 p-4 rounded-2xl flex flex-col items-center justify-center gap-2 transition shadow-sm hover:shadow-md">
+                    <i class="fa-solid fa-hammer text-2xl text-amber-500"></i>
+                    <span class="text-xs font-bold text-gray-800">الخدمات</span>
+                </a>
+                <!-- Category 3 -->
+                <a href="categories.html" class="bg-white border border-gray-200 hover:border-amber-500 p-4 rounded-2xl flex flex-col items-center justify-center gap-2 transition shadow-sm hover:shadow-md">
+                    <i class="fa-solid fa-briefcase text-2xl text-amber-500"></i>
+                    <span class="text-xs font-bold text-gray-800">وظائف شاغرة</span>
+                </a>
+                <!-- Category 4 -->
+                <a href="categories.html" class="bg-white border border-gray-200 hover:border-amber-500 p-4 rounded-2xl flex flex-col items-center justify-center gap-2 transition shadow-sm hover:shadow-md">
+                    <i class="fa-solid fa-house-chimney text-2xl text-amber-500"></i>
+                    <span class="text-xs font-bold text-gray-800">عقارات للإيجار</span>
+                </a>
+                <!-- Category 5 -->
+                <a href="categories.html" class="bg-white border border-gray-200 hover:border-amber-500 p-4 rounded-2xl flex flex-col items-center justify-center gap-2 transition shadow-sm hover:shadow-md">
+                    <i class="fa-solid fa-building text-2xl text-amber-500"></i>
+                    <span class="text-xs font-bold text-gray-800">عقارات للبيع</span>
+                </a>
+                <!-- Category 6 -->
+                <a href="categories.html" class="bg-white border border-gray-200 hover:border-amber-500 p-4 rounded-2xl flex flex-col items-center justify-center gap-2 transition shadow-sm hover:shadow-md">
+                    <i class="fa-solid fa-motorcycle text-2xl text-amber-500"></i>
+                    <span class="text-xs font-bold text-gray-800">دراجات نارية</span>
+                </a>
+                <!-- Category 7 -->
+                <a href="categories.html" class="bg-white border border-gray-200 hover:border-amber-500 p-4 rounded-2xl flex flex-col items-center justify-center gap-2 transition shadow-sm hover:shadow-md">
+                    <i class="fa-solid fa-car text-2xl text-amber-500"></i>
+                    <span class="text-xs font-bold text-gray-800">سيارات ومركبات</span>
+                </a>
+                <!-- Category 8 -->
+                <a href="categories.html" class="bg-white border border-gray-200 hover:border-amber-500 p-4 rounded-2xl flex flex-col items-center justify-center gap-2 transition shadow-sm hover:shadow-md">
+                    <i class="fa-solid fa-store text-2xl text-amber-500"></i>
+                    <span class="text-xs font-bold text-gray-800">متاجر</span>
+                </a>
+                <!-- Category 9 -->
+                <a href="categories.html" class="bg-white border border-gray-200 hover:border-amber-500 p-4 rounded-2xl flex flex-col items-center justify-center gap-2 transition shadow-sm hover:shadow-md">
+                    <i class="fa-solid fa-bullhorn text-2xl text-amber-500"></i>
+                    <span class="text-xs font-bold text-gray-800">العروض</span>
+                </a>
+                <!-- Category 10 -->
+                <a href="categories.html" class="bg-white border border-gray-200 hover:border-amber-500 p-4 rounded-2xl flex flex-col items-center justify-center gap-2 transition shadow-sm hover:shadow-md">
+                    <i class="fa-solid fa-laptop text-2xl text-amber-500"></i>
+                    <span class="text-xs font-bold text-gray-800">إلكترونيات</span>
+                </a>
+                <!-- Category 11 -->
+                <a href="categories.html" class="bg-white border border-gray-200 hover:border-amber-500 p-4 rounded-2xl flex flex-col items-center justify-center gap-2 transition shadow-sm hover:shadow-md">
+                    <i class="fa-solid fa-shirt text-2xl text-amber-500"></i>
+                    <span class="text-xs font-bold text-gray-800">موضة وأطفال</span>
+                </a>
+                <!-- Category 12 -->
+                <a href="categories.html" class="bg-white border border-gray-200 hover:border-amber-500 p-4 rounded-2xl flex flex-col items-center justify-center gap-2 transition shadow-sm hover:shadow-md">
+                    <i class="fa-solid fa-couch text-2xl text-amber-500"></i>
+                    <span class="text-xs font-bold text-gray-800">منزل وحديقة</span>
+                </a>
 
-            <!-- Hero Banner Slider -->
-            <div class="lg:col-span-3 bg-gradient-to-r from-stone-900 to-amber-950 rounded-2xl p-8 text-white flex flex-col justify-between relative overflow-hidden shadow-sm min-h-[320px]">
-                <div class="max-w-md z-10">
-                    <span class="bg-amber-500 text-white text-[10px] font-bold px-3 py-1 rounded-full mb-3 inline-block">عروض حصرية</span>
-                    <h1 class="text-2xl md:text-3xl font-black mb-2">خصومات تصل إلى 50%</h1>
-                    <p class="text-gray-300 text-xs mb-6">على الإلكترونيات والمنتجات المميزة لفترة محدودة.</p>
-                    <a href="categories.html" class="inline-block bg-amber-500 hover:bg-amber-600 text-white font-bold px-6 py-2.5 rounded-xl text-xs transition shadow-sm">تسوق الآن</a>
-                </div>
-                <div class="flex justify-center gap-2 mt-4 z-10">
-                    <span class="w-2 h-2 rounded-full bg-amber-500"></span>
-                    <span class="w-2 h-2 rounded-full bg-white/40"></span>
-                    <span class="w-2 h-2 rounded-full bg-white/40"></span>
-                </div>
             </div>
         </div>
 
-        <!-- Features Bar -->
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 my-8 bg-white border border-gray-200 p-4 rounded-2xl shadow-sm text-xs text-center">
-            <div class="flex items-center justify-center gap-3 border-l border-gray-100"><i class="fa-solid fa-headset text-amber-500 text-xl"></i><div><div class="font-bold">دعم العملاء</div><div class="text-gray-400 text-[10px]">24/7</div></div></div>
-            <div class="flex items-center justify-center gap-3 border-l border-gray-100"><i class="fa-solid fa-tag text-amber-500 text-xl"></i><div><div class="font-bold">أفضل الأسعار</div><div class="text-gray-400 text-[10px]">توفير دائم</div></div></div>
-            <div class="flex items-center justify-center gap-3 border-l border-gray-100"><i class="fa-solid fa-shield-halved text-amber-500 text-xl"></i><div><div class="font-bold">دفع آمن 100%</div><div class="text-gray-400 text-[10px]">لجميع مشترياتك</div></div></div>
-            <div class="flex items-center justify-center gap-3"><i class="fa-solid fa-truck-fast text-amber-500 text-xl"></i><div><div class="font-bold">توصيل سريع</div><div class="text-gray-400 text-[10px]">إلى جميع المدن</div></div></div>
-        </div>
-
-        <!-- Dynamic Ads Section -->
+        <!-- Dynamic Ads Section (Connected to Firebase) -->
         <div class="mb-10">
             <div class="flex justify-between items-center mb-6">
                 <h2 class="text-base font-black text-gray-900">أحدث الإعلانات والمنتجات</h2>
@@ -125,44 +154,32 @@
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-white border-t border-gray-200 mt-12 py-8 text-xs text-gray-600">
-        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-            <div>
-                <div class="flex items-center gap-2 mb-3">
-                    <div class="bg-amber-500 text-white p-2 rounded-lg"><i class="fa-solid fa-bag-shopping"></i></div>
-                    <span class="text-lg font-black text-gray-900">GRID SOOQ</span>
-                </div>
-                <p class="text-gray-500 text-[11px] mb-4">تسوق كل ما تحتاجه بضغطة زر وبأفضل الأسعار المضمونة.</p>
+    <!-- Bottom Navigation Bar (OpenSooq Style) -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 py-2 px-6 flex justify-around items-center z-50 text-[11px] shadow-lg">
+        <a href="index.html" class="flex flex-col items-center text-amber-600 font-bold">
+            <i class="fa-solid fa-house text-lg mb-1"></i>
+            <span>الرئيسية</span>
+        </a>
+        <a href="#" class="flex flex-col items-center text-gray-500 hover:text-amber-600">
+            <i class="fa-solid fa-comments text-lg mb-1"></i>
+            <span>دردشاتي</span>
+        </a>
+        <!-- Floating Add Button -->
+        <a href="add-ad.html" class="flex flex-col items-center -mt-6">
+            <div class="bg-amber-500 hover:bg-amber-600 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-md border-4 border-white transition transform hover:scale-105">
+                <i class="fa-solid fa-plus text-lg"></i>
             </div>
-            <div>
-                <h3 class="font-bold text-gray-900 mb-3">حسابي</h3>
-                <ul class="space-y-2 text-[11px]">
-                    <li><a href="signin.html" class="hover:text-amber-600">تسجيل الدخول</a></li>
-                    <li><a href="signin.html" class="hover:text-amber-600">إنشاء حساب</a></li>
-                    <li><a href="add-ad.html" class="hover:text-amber-600">إعلاناتي</a></li>
-                </ul>
-            </div>
-            <div>
-                <h3 class="font-bold text-gray-900 mb-3">خدمة العملاء</h3>
-                <ul class="space-y-2 text-[11px]">
-                    <li><a href="#" class="hover:text-amber-600">تواصل معنا</a></li>
-                    <li><a href="help.html" class="hover:text-amber-600">الأسئلة الشائعة</a></li>
-                    <li><a href="#" class="hover:text-amber-600">تتبع الطلبات</a></li>
-                </ul>
-            </div>
-            <div>
-                <h3 class="font-bold text-gray-900 mb-3">اشترك في نشرتنا البريدية</h3>
-                <div class="flex gap-2">
-                    <input type="email" placeholder="أدخل بريدك الإلكتروني" class="border border-gray-300 rounded-xl px-3 py-2 outline-none w-full text-[11px]">
-                    <button class="bg-amber-500 text-white font-bold px-4 rounded-xl">اشترك</button>
-                </div>
-            </div>
-        </div>
-        <div class="max-w-7xl mx-auto px-4 pt-4 border-t border-gray-100 text-center text-[10px] text-gray-400">
-            Grid Sooq 2026 © جميع الحقوق محفوظة
-        </div>
-    </footer>
+            <span class="text-amber-600 font-bold mt-1">أضف إعلان</span>
+        </a>
+        <a href="add-ad.html" class="flex flex-col items-center text-gray-500 hover:text-amber-600">
+            <i class="fa-solid fa-rectangle-list text-lg mb-1"></i>
+            <span>إعلاناتي</span>
+        </a>
+        <a href="signin.html" class="flex flex-col items-center text-gray-500 hover:text-amber-600">
+            <i class="fa-solid fa-user text-lg mb-1"></i>
+            <span>حسابي</span>
+        </a>
+    </div>
 
     <!-- Firebase Script Logic -->
     <script type="module">
