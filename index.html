@@ -1,30 +1,42 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl" id="htmlTag">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GRID SOOQ - منصة البيع والشراء</title>
+    <title>GRID SOOQ - تسوق كل ما تحتاجه</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .bg-gold { background-color: #cda235; }
+        .text-gold { color: #cda235; }
+        .border-gold { border-color: #cda235; }
+        .hover-gold:hover { background-color: #b88e28; }
+    </style>
 </head>
-<body class="bg-gray-100 font-sans text-gray-800">
+<body class="bg-[#f8f9fa] font-sans text-gray-800">
 
     <!-- Top Bar -->
     <div class="bg-gray-100 text-xs py-2 border-b border-gray-200">
         <div class="container mx-auto px-4 flex justify-between items-center">
-            <div class="flex items-center space-x-4 space-x-reverse text-gray-600">
-                <!-- زر تغيير اللغة الحقيقي -->
-                <button onclick="toggleRealLanguage()" class="flex items-center cursor-pointer hover:text-amber-600 font-bold bg-white px-2 py-1 rounded border text-xs">
-                    <i class="fa-solid fa-globe ml-1 text-amber-500"></i> <span id="langText">English</span>
-                </button>
-            </div>
-            <div class="text-gray-500 flex items-center gap-4">
-                <a href="messages.html" class="hover:text-amber-600 font-bold text-gray-700 flex items-center gap-1">
-                    <i class="fa-regular fa-comments text-amber-600 text-sm"></i> <span data-key="messages">الرسائل</span>
-                    <span class="bg-red-500 text-white text-[9px] px-1.5 py-0.2 rounded-full font-bold">1</span>
+            <!-- Left Side: Chat & App (فوق على اليسار زي ما طلبت بالظبط) -->
+            <div class="flex items-center space-x-4 space-x-reverse">
+                <a href="messages.html" class="flex items-center gap-1 bg-white border border-gray-300 px-3 py-1 rounded-full text-xs font-bold text-gray-700 hover:text-amber-600 shadow-sm">
+                    <i class="fa-regular fa-comments text-amber-500 text-sm"></i>
+                    <span>الدردشة والرسائل</span>
+                    <span class="bg-red-500 text-white text-[9px] px-1.5 py-0.5 rounded-full mr-1">1</span>
                 </a>
-                <span>|</span>
-                <a href="favorites.html" class="hover:underline font-bold text-amber-600"><i class="fa-regular fa-heart"></i> <span data-key="favorites">المفضلة</span></a>
+                <span class="bg-amber-100 text-amber-800 px-2 py-1 rounded-md flex items-center gap-1 font-bold">
+                    <i class="fa-solid fa-mobile-screen"></i> حمل التطبيق
+                </span>
+                <span class="flex items-center cursor-pointer text-gray-600">العربية <i class="fa-solid fa-chevron-down mr-1 text-[10px]"></i></span>
+                <a href="help.html" class="text-gray-600 hover:underline">مساعدة</a>
+                <a href="help.html" class="text-gray-600 hover:underline">تتبع الطلبات</a>
+            </div>
+
+            <!-- Right Side: Welcome -->
+            <div class="text-gray-500 flex items-center gap-1">
+                <span>مرحباً بك في Grid Sooq</span>
+                <a href="favorites.html" class="text-amber-600 mr-2 hover:underline"><i class="fa-regular fa-heart"></i> المفضلة</a>
             </div>
         </div>
     </div>
@@ -33,41 +45,44 @@
     <header class="bg-white shadow-sm py-4 border-b">
         <div class="container mx-auto px-4 flex items-center justify-between gap-6">
             <!-- Logo -->
-            <a href="index.html" class="flex items-center gap-2">
-                <div class="bg-amber-500 text-white p-2 rounded-lg">
+            <a href="index.html" class="flex items-center gap-3">
+                <div class="bg-amber-500 text-white p-2.5 rounded-xl">
                     <i class="fa-solid fa-bag-shopping text-2xl"></i>
                 </div>
                 <div>
                     <h1 class="text-2xl font-black tracking-wider text-gray-900 leading-none">GRID SOOQ</h1>
-                    <span class="text-xs text-gray-400 font-medium" data-key="slogan">تسوق وسوق كل ما تحتاجه</span>
+                    <span class="text-xs text-gray-400 font-medium">تسوق كل ما تحتاجه</span>
                 </div>
             </a>
 
             <!-- Search Bar -->
             <form onsubmit="handleSearch(event)" class="flex-1 max-w-2xl flex items-center border-2 border-amber-500 rounded-lg overflow-hidden">
-                <input id="searchInput" type="text" placeholder="إبحث عن أجهزة، سيارات، ألعاب..." class="w-full py-2 px-4 outline-none text-sm">
-                <button type="submit" class="bg-amber-500 hover:bg-amber-600 text-white px-6 py-2 font-bold">
+                <input id="searchInput" type="text" placeholder="إبحث عن أي شيء..." class="w-full py-2.5 px-4 outline-none text-sm">
+                <select class="bg-gray-50 border-r px-3 py-2.5 text-xs text-gray-600 outline-none border-l">
+                    <option>كل الأقسام</option>
+                </select>
+                <button type="submit" class="bg-amber-500 hover:bg-amber-600 text-white px-6 py-2.5">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
             </form>
 
             <!-- User Actions -->
             <div class="flex items-center gap-6">
-                <a href="login.html" id="userAuthBtn" class="flex items-center gap-2 text-gray-700 hover:text-amber-600">
-                    <i class="fa-regular fa-user text-xl"></i>
+                <a href="login.html" class="flex items-center gap-2 text-gray-700 hover:text-amber-600">
+                    <i class="fa-regular fa-user text-2xl text-gray-600"></i>
                     <div class="text-xs text-right">
-                        <div data-key="account">حسابي</div>
-                        <div class="font-bold" id="authStatusText" data-key="login">تسجيل دخول</div>
+                        <div class="text-gray-400">حسابي</div>
+                        <div class="font-bold">تسجيل دخول</div>
                     </div>
                 </a>
                 <a href="cart.html" class="flex items-center gap-2 text-gray-700 hover:text-amber-600 relative">
                     <div class="relative">
-                        <i class="fa-solid fa-cart-shopping text-xl"></i>
-                        <span id="cartCount" class="absolute -top-2 -right-2 bg-amber-500 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">0</span>
+                        <i class="fa-solid fa-cart-shopping text-2xl text-gray-600"></i>
+                        <span id="cartCount" class="absolute -top-2 -right-2 bg-amber-500 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">3</span>
                     </div>
                     <div class="text-xs text-right">
-                        <div data-key="cart">السلة</div>
-                        <div class="font-bold" id="cartTotalText">0.00 ر.س</div>
+                        <div class="text-gray-400">أغراضك</div>
+                        <div class="font-bold">السلة</div>
                     </div>
                 </a>
             </div>
@@ -78,147 +93,207 @@
     <nav class="bg-white border-b text-sm">
         <div class="container mx-auto px-4 flex items-center justify-between">
             <div class="flex items-center space-x-6 space-x-reverse py-3">
-                <a href="categories.html" class="bg-amber-500 text-white px-4 py-2 rounded-md font-bold flex items-center gap-2 text-xs hover:bg-amber-600">
-                    <i class="fa-solid fa-bars"></i> <span data-key="allCategories">كل الأقسام</span>
+                <a href="categories.html" class="bg-amber-500 text-white px-5 py-2 rounded-lg font-bold flex items-center gap-2 text-xs hover:bg-amber-600">
+                    <i class="fa-solid fa-bars"></i> كل الأقسام
                 </a>
-                <a href="index.html" class="text-amber-600 font-bold border-b-2 border-amber-600 pb-3 -mb-3" data-key="home">الرئيسية</a>
-                <a href="messages.html" class="text-gray-600 hover:text-amber-600 font-medium"><i class="fa-regular fa-comment-dots text-amber-500"></i> <span data-key="chatSellers">محادثات البائعين</span></a>
-                <a href="#" onclick="checkAuthAndAddAd(event)" class="text-amber-600 font-bold hover:text-amber-700" data-key="addAd">+ إضافة إعلان</a>
+                <a href="index.html" class="text-amber-600 font-bold border-b-2 border-amber-600 pb-3 -mb-3">الرئيسية</a>
+                <a href="categories.html" class="text-gray-600 hover:text-amber-600">الأقسام</a>
+                <a href="deals.html" class="text-gray-600 hover:text-amber-600">عروض اليوم</a>
+                <a href="store.html" class="text-gray-600 hover:text-amber-600">المتجر</a>
+                <a href="#" onclick="checkAuth(event)" class="text-amber-600 font-bold hover:text-amber-700">+ إضافة إعلان</a>
+                <a href="blog.html" class="text-gray-600 hover:text-amber-600">المدونة</a>
+                <a href="help.html" class="text-gray-600 hover:text-amber-600">تواصل معنا</a>
             </div>
         </div>
     </nav>
 
     <!-- Main Content Grid -->
     <div class="container mx-auto px-4 py-6">
-        <div class="flex items-center justify-between mb-4">
-            <h3 class="text-xl font-bold" id="sectionTitle" data-key="latestAds">أحدث الإعلانات والمنتجات</h3>
+        <div class="grid grid-cols-12 gap-6">
+            
+            <!-- Sidebar (الأقسام الرئيسية) -->
+            <aside class="col-span-12 lg:col-span-3 bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
+                <h3 class="font-bold text-amber-600 text-center mb-4 pb-2 border-b">الأقسام الرئيسية</h3>
+                <ul class="space-y-3 text-xs text-gray-700">
+                    <li class="flex items-center justify-between hover:text-amber-600 cursor-pointer p-1">
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-tv text-gray-400"></i> الإلكترونيات</span>
+                        <i class="fa-solid fa-chevron-left text-[10px] text-gray-400"></i>
+                    </li>
+                    <li class="flex items-center justify-between hover:text-amber-600 cursor-pointer p-1">
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-house text-gray-400"></i> المنزل والمطبخ</span>
+                        <i class="fa-solid fa-chevron-left text-[10px] text-gray-400"></i>
+                    </li>
+                    <li class="flex items-center justify-between hover:text-amber-600 cursor-pointer p-1">
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-shirt text-gray-400"></i> الأزياء والملابس</span>
+                        <i class="fa-solid fa-chevron-left text-[10px] text-gray-400"></i>
+                    </li>
+                    <li class="flex items-center justify-between hover:text-amber-600 cursor-pointer p-1">
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-mobile-screen-button text-gray-400"></i> الجوالات والأجهزة اللوحية</span>
+                        <i class="fa-solid fa-chevron-left text-[10px] text-gray-400"></i>
+                    </li>
+                    <li class="flex items-center justify-between hover:text-amber-600 cursor-pointer p-1">
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-car text-gray-400"></i> السيارات وقطع الغيار</span>
+                        <i class="fa-solid fa-chevron-left text-[10px] text-gray-400"></i>
+                    </li>
+                    <li class="flex items-center justify-between hover:text-amber-600 cursor-pointer p-1">
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-heart-pulse text-gray-400"></i> الجمال والصحة</span>
+                        <i class="fa-solid fa-chevron-left text-[10px] text-gray-400"></i>
+                    </li>
+                    <li class="flex items-center justify-between hover:text-amber-600 cursor-pointer p-1">
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-dumbbell text-gray-400"></i> الرياضة واللياقة</span>
+                        <i class="fa-solid fa-chevron-left text-[10px] text-gray-400"></i>
+                    </li>
+                    <li class="flex items-center justify-between hover:text-amber-600 cursor-pointer p-1">
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-gamepad text-gray-400"></i> الأطفال والألعاب</span>
+                        <i class="fa-solid fa-chevron-left text-[10px] text-gray-400"></i>
+                    </li>
+                </ul>
+                <a href="categories.html" class="mt-4 pt-3 border-t flex items-center justify-center gap-2 text-xs font-bold text-gray-600 hover:text-amber-600 block text-center">
+                    <i class="fa-solid fa-border-all"></i> عرض كل الأقسام
+                </a>
+            </aside>
+
+            <!-- Main Banner (السلايدر الكبيرة المطابقة) -->
+            <main class="col-span-12 lg:col-span-9">
+                <div class="relative bg-gradient-to-r from-neutral-900 via-neutral-800 to-amber-950 rounded-2xl overflow-hidden p-8 text-white min-h-[340px] flex items-center justify-between shadow-md">
+                    <button class="absolute left-4 bg-white/20 hover:bg-white/40 text-white w-8 h-8 rounded-full flex items-center justify-center z-10"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button class="absolute right-4 bg-white/20 hover:bg-white/40 text-white w-8 h-8 rounded-full flex items-center justify-center z-10"><i class="fa-solid fa-chevron-right"></i></button>
+
+                    <div class="z-10 max-w-md pr-6">
+                        <h2 class="text-4xl font-extrabold mb-2">عروض حصرية</h2>
+                        <p class="text-3xl font-bold text-amber-400 mb-2">خصومات تصل إلى <span class="text-5xl font-black">50%</span></p>
+                        <p class="text-gray-300 text-sm mb-6">على الإلكترونيات والمنتجات المميزة</p>
+                        <a href="categories.html" class="bg-amber-500 hover:bg-amber-600 text-black font-bold px-8 py-2.5 rounded-lg shadow-md inline-block text-sm">تسوق الآن</a>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=600&q=80" class="w-80 h-80 object-contain hidden md:block rounded-xl drop-shadow-2xl" alt="Smart Watch Banner">
+
+                    <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
+                        <span class="w-2 h-2 rounded-full bg-white/40"></span>
+                        <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+                        <span class="w-2 h-2 rounded-full bg-white/40"></span>
+                        <span class="w-2 h-2 rounded-full bg-white/40"></span>
+                    </div>
+                </div>
+            </main>
         </div>
 
-        <div id="productsGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
-            <!-- Product 1 -->
-            <div class="product-item bg-white rounded-xl overflow-hidden border shadow-sm relative group block" data-title="iphone 15 pro max آيفون">
-                <a href="product.html">
-                    <div class="h-44 bg-gray-100 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover group-hover:scale-105 transition">
-                    </div>
-                </a>
+        <!-- Features Row (شريط المزايا الأربعة) -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
+            <div class="bg-white p-4 rounded-xl border shadow-sm flex items-center gap-3">
+                <i class="fa-solid fa-headset text-2xl text-amber-500"></i>
+                <div>
+                    <h4 class="font-bold text-xs">دعم العملاء</h4>
+                    <p class="text-[10px] text-gray-400">24/7</p>
+                </div>
+            </div>
+            <div class="bg-white p-4 rounded-xl border shadow-sm flex items-center gap-3">
+                <i class="fa-solid fa-tag text-2xl text-amber-500"></i>
+                <div>
+                    <h4 class="font-bold text-xs">أفضل الأسعار</h4>
+                    <p class="text-[10px] text-gray-400">توفير دائم</p>
+                </div>
+            </div>
+            <div class="bg-white p-4 rounded-xl border shadow-sm flex items-center gap-3">
+                <i class="fa-solid fa-lock text-2xl text-amber-500"></i>
+                <div>
+                    <h4 class="font-bold text-xs">دفع آمن 100%</h4>
+                    <p class="text-[10px] text-gray-400">لجميع مشترياتك</p>
+                </div>
+            </div>
+            <div class="bg-white p-4 rounded-xl border shadow-sm flex items-center gap-3">
+                <i class="fa-solid fa-shield-halved text-2xl text-amber-500"></i>
+                <div>
+                    <h4 class="font-bold text-xs">ضمان استرجاع</h4>
+                    <p class="text-[10px] text-gray-400">خلال 7 أيام</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section: أحدث الإعلانات -->
+        <div class="flex items-center justify-between mt-10 mb-4">
+            <h3 class="text-lg font-bold">أحدث الإعلانات</h3>
+            <a href="categories.html" class="text-xs font-bold text-amber-600 hover:underline">عرض الكل <i class="fa-solid fa-chevron-left text-[9px]"></i></a>
+        </div>
+
+        <!-- Products Grid (6 بطاقات مثل الصورة بالظبط) -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
+            
+            <!-- Card 1 -->
+            <div class="bg-white rounded-xl overflow-hidden border shadow-sm relative group block">
+                <span class="absolute top-2 right-2 bg-amber-500 text-white text-[10px] font-bold px-2 py-0.5 rounded z-10">جديد</span>
+                <button class="absolute top-2 left-2 text-gray-400 hover:text-red-500 z-10"><i class="fa-regular fa-heart"></i></button>
+                <div class="h-36 bg-gray-100 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover group-hover:scale-105 transition" alt="Sofa">
+                </div>
+                <div class="p-3 text-right">
+                    <h4 class="font-bold text-xs truncate">كنبة زاوية فاخرة</h4>
+                    <p class="text-[10px] text-gray-400 mt-1"><i class="fa-solid fa-location-dot"></i> الرياض</p>
+                    <p class="font-black text-amber-600 mt-2 text-sm">1,450 ر.س</p>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="bg-white rounded-xl overflow-hidden border shadow-sm relative group block">
+                <span class="absolute top-2 right-2 bg-amber-500 text-white text-[10px] font-bold px-2 py-0.5 rounded z-10">جديد</span>
+                <button class="absolute top-2 left-2 text-gray-400 hover:text-red-500 z-10"><i class="fa-regular fa-heart"></i></button>
+                <div class="h-36 bg-gray-100 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover group-hover:scale-105 transition" alt="iPhone">
+                </div>
                 <div class="p-3 text-right">
                     <h4 class="font-bold text-xs truncate">iPhone 15 Pro Max</h4>
-                    <p class="text-[10px] text-gray-400 mt-1"><i class="fa-solid fa-location-dot"></i> عمان</p>
-                    <div class="flex items-center justify-between mt-3">
-                        <p class="font-black text-amber-600 text-sm">4,999 ر.س</p>
-                        <button onclick="addToCartReal('iPhone 15 Pro Max', 4999)" class="bg-amber-500 text-white text-xs px-2.5 py-1 rounded-lg font-bold hover:bg-amber-600">
-                            + السلة
-                        </button>
-                    </div>
+                    <p class="text-[10px] text-gray-400 mt-1"><i class="fa-solid fa-location-dot"></i> جدة</p>
+                    <p class="font-black text-amber-600 mt-2 text-sm">4,999 ر.س</p>
                 </div>
             </div>
 
-            <!-- Product 2 -->
-            <div class="product-item bg-white rounded-xl overflow-hidden border shadow-sm relative group block" data-title="يد بلايستيشن 5 ps5 controller">
-                <a href="product.html">
-                    <div class="h-44 bg-gray-100 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover group-hover:scale-105 transition">
-                    </div>
-                </a>
+            <!-- Card 3 -->
+            <div class="bg-white rounded-xl overflow-hidden border shadow-sm relative group block">
+                <span class="absolute top-2 right-2 bg-amber-500 text-white text-[10px] font-bold px-2 py-0.5 rounded z-10">جديد</span>
+                <button class="absolute top-2 left-2 text-gray-400 hover:text-red-500 z-10"><i class="fa-regular fa-heart"></i></button>
+                <div class="h-36 bg-gray-100 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover group-hover:scale-105 transition" alt="Car">
+                </div>
                 <div class="p-3 text-right">
-                    <h4 class="font-bold text-xs truncate">يد بلايستيشن 5 أصلية</h4>
-                    <p class="text-[10px] text-gray-400 mt-1"><i class="fa-solid fa-location-dot"></i> إربد</p>
-                    <div class="flex items-center justify-between mt-3">
-                        <p class="font-black text-amber-600 text-sm">299 ر.س</p>
-                        <button onclick="addToCartReal('يد بلايستيشن 5', 299)" class="bg-amber-500 text-white text-xs px-2.5 py-1 rounded-lg font-bold hover:bg-amber-600">
-                            + السلة
-                        </button>
-                    </div>
+                    <h4 class="font-bold text-xs truncate">تويوتا لاند كروزر 2022</h4>
+                    <p class="text-[10px] text-gray-400 mt-1"><i class="fa-solid fa-location-dot"></i> الدمام</p>
+                    <p class="font-black text-amber-600 mt-2 text-sm">189,000 ر.س</p>
                 </div>
             </div>
-        </div>
-    </div>
 
-    <script>
-        // 1. نظام الحساب والإعلان الفعلي
-        function checkAuthAndAddAd(e) {
-            e.preventDefault();
-            const isLoggedIn = localStorage.getItem('user_logged_in');
-            if (!isLoggedIn) {
-                window.location.href = 'login.html?redirect=add-ad.html';
-            } else {
-                window.location.href = 'add-ad.html';
-            }
-        }
+            <!-- Card 4 -->
+            <div class="bg-white rounded-xl overflow-hidden border shadow-sm relative group block">
+                <span class="absolute top-2 right-2 bg-amber-500 text-white text-[10px] font-bold px-2 py-0.5 rounded z-10">جديد</span>
+                <button class="absolute top-2 left-2 text-gray-400 hover:text-red-500 z-10"><i class="fa-regular fa-heart"></i></button>
+                <div class="h-36 bg-gray-100 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover group-hover:scale-105 transition" alt="MacBook">
+                </div>
+                <div class="p-3 text-right">
+                    <h4 class="font-bold text-xs truncate">MacBook Air M2</h4>
+                    <p class="text-[10px] text-gray-400 mt-1"><i class="fa-solid fa-location-dot"></i> الرياض</p>
+                    <p class="font-black text-amber-600 mt-2 text-sm">4,200 ر.س</p>
+                </div>
+            </div>
 
-        // 2. البحث والتوجيه السري لصفحة الأدمن
-        function handleSearch(e) {
-            e.preventDefault();
-            const query = document.getElementById('searchInput').value.trim();
-            if (query === 'lobbyadmin0P') {
-                window.location.href = 'admin.html';
-                return;
-            }
-            const items = document.querySelectorAll('.product-item');
-            items.forEach(item => {
-                const title = item.getAttribute('data-title').toLowerCase();
-                item.style.display = title.includes(query.toLowerCase()) || query === '' ? 'block' : 'none';
-            });
-        }
+            <!-- Card 5 -->
+            <div class="bg-white rounded-xl overflow-hidden border shadow-sm relative group block">
+                <span class="absolute top-2 right-2 bg-amber-500 text-white text-[10px] font-bold px-2 py-0.5 rounded z-10">جديد</span>
+                <button class="absolute top-2 left-2 text-gray-400 hover:text-red-500 z-10"><i class="fa-regular fa-heart"></i></button>
+                <div class="h-36 bg-gray-100 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover group-hover:scale-105 transition" alt="Watch">
+                </div>
+                <div class="p-3 text-right">
+                    <h4 class="font-bold text-xs truncate">ساعة يد رجالية فاخرة</h4>
+                    <p class="text-[10px] text-gray-400 mt-1"><i class="fa-solid fa-location-dot"></i> جدة</p>
+                    <p class="font-black text-amber-600 mt-2 text-sm">350 ر.س</p>
+                </div>
+            </div>
 
-        // 3. السلة الحقيقية (حفظ وتحديث بالديناميكية)
-        let cart = JSON.parse(localStorage.getItem('user_cart') || '[]');
-        function updateCartUI() {
-            document.getElementById('cartCount').innerText = cart.length;
-            const total = cart.reduce((sum, item) => sum + item.price, 0);
-            document.getElementById('cartTotalText').innerText = total + ' ر.س';
-        }
-        function addToCartReal(name, price) {
-            cart.push({ name, price });
-            localStorage.setItem('user_cart', JSON.stringify(cart));
-            updateCartUI();
-        }
-        updateCartUI();
-
-        // 4. ترجمة النصوص الفعلية (بدون pop-up)
-        let currentLang = 'ar';
-        const translations = {
-            en: {
-                slogan: 'Buy & Sell Everything',
-                messages: 'Messages',
-                favorites: 'Favorites',
-                account: 'Account',
-                login: 'Login',
-                cart: 'Cart',
-                allCategories: 'All Categories',
-                home: 'Home',
-                chatSellers: 'Seller Chat',
-                addAd: '+ Post Ad',
-                latestAds: 'Latest Listings'
-            },
-            ar: {
-                slogan: 'تسوق وسوق كل ما تحتاجه',
-                messages: 'الرسائل',
-                favorites: 'المفضلة',
-                account: 'حسابي',
-                login: 'تسجيل دخول',
-                cart: 'السلة',
-                allCategories: 'كل الأقسام',
-                home: 'الرئيسية',
-                chatSellers: 'محادثات البائعين',
-                addAd: '+ إضافة إعلان',
-                latestAds: 'أحدث الإعلانات والمنتجات'
-            }
-        };
-
-        function toggleRealLanguage() {
-            currentLang = currentLang === 'ar' ? 'en' : 'ar';
-            document.getElementById('htmlTag').setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
-            document.getElementById('langText').innerText = currentLang === 'ar' ? 'English' : 'العربية';
-            
-            document.querySelectorAll('[data-key]').forEach(elem => {
-                const key = elem.getAttribute('data-key');
-                if (translations[currentLang][key]) {
-                    elem.innerText = translations[currentLang][key];
-                }
-            });
-        }
-    </script>
-</body>
-</html>
+            <!-- Card 6 -->
+            <div class="bg-white rounded-xl overflow-hidden border shadow-sm relative group block">
+                <span class="absolute top-2 right-2 bg-amber-500 text-white text-[10px] font-bold px-2 py-0.5 rounded z-10">جديد</span>
+                <button class="absolute top-2 left-2 text-gray-400 hover:text-red-500 z-10"><i class="fa-regular fa-heart"></i></button>
+                <div class="h-36 bg-gray-100 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover group-hover:scale-105 transition" alt="Samsung">
+                </div>
+                <div class="p-3 text-right">
+        
