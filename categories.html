@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GRID SOOQ - الأقسام والتصنيفات</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-100 font-sans text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm py-4 border-b">
+        <div class="container mx-auto px-4 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-2">
+                <div class="bg-amber-500 text-white p-2 rounded-lg">
+                    <i class="fa-solid fa-bag-shopping text-xl"></i>
+                </div>
+                <span class="text-xl font-black text-gray-900">GRID SOOQ</span>
+            </a>
+            <a href="index.html" class="text-xs font-bold text-amber-600 hover:underline">
+                <i class="fa-solid fa-arrow-right ml-1"></i> العودة للرئيسية
+            </a>
+        </div>
+    </header>
+
+    <!-- Categories Grid -->
+    <div class="container mx-auto px-4 py-8">
+        <div class="text-center mb-8">
+            <h1 class="text-3xl font-black text-gray-900">جميع الأقسام والتصنيفات</h1>
+            <p class="text-xs text-gray-400 mt-2">اختر القسم الذي تبحث عنه لتصفح كافة الإعلانات والمنتجات المتوفرة</p>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+            
+            <!-- Category: الإلكترونيات -->
+            <a href="#" class="bg-white p-6 rounded-2xl border shadow-sm hover:shadow-md transition text-center group block">
+                <div class="w-16 h-16 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl group-hover:bg-amber-500 group-hover:text-white transition">
+                    <i class="fa-solid fa-mobile-screen-button"></i>
+                </div>
+                <h3 class="font-bold text-sm text-gray-800">الإلكترونيات والجوالات</h3>
+                <p class="text-[11px] text-gray-400 mt-1">هواتف، أجهزة لوحية، إكسسوارات</p>
+            </a>
+
+            <!-- Category: ألعاب الفيديو -->
+            <a href="#" class="bg-white p-6 rounded-2xl border shadow-sm hover:shadow-md transition text-center group block">
+                <div class="w-16 h-16 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl group-hover:bg-indigo-500 group-hover:text-white transition">
+                    <i class="fa-solid fa-gamepad"></i>
+                </div>
+                <h3 class="font-bold text-sm text-gray-800">ألعاب الفيديو والكونسول</h3>
+                <p class="text-[11px] text-gray-400 mt-1">بلايستيشن، حسابات، ألعاب، بطاقات</p>
+            </a>
+
+            <!-- Category: كمبيوتر وبرمجة -->
+            <a href="#" class="bg-white p-6 rounded-2xl border shadow-sm hover:shadow-md transition text-center group block">
+                <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl group-hover:bg-blue-500 group-hover:text-white transition">
+                    <i class="fa-solid fa-laptop-code"></i>
+                </div>
+                <h3 class="font-bold text-sm text-gray-800">كمبيوتر ومعدات تطوير</h3>
+                <p class="text-[11px] text-gray-400 mt-1">لابتوبات، قطع PC، برمجيات</p>
+            </a>
+
+            <!-- Category: رياضة ولياقة -->
+            <a href="#" class="bg-white p-6 rounded-2xl border shadow-sm hover:shadow-md transition text-center group block">
+                <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl group-hover:bg-emerald-500 group-hover:text-white transition">
+                    <i class="fa-solid fa-dumbbell"></i>
+                </div>
+                <h3 class="font-bold text-sm text-gray-800">رياضة وأحذية ومعدات</h3>
+                <p class="text-[11px] text-gray-400 mt-1">أحذية رياضية، معدات لياقة بدنية</p>
+            </a>
+
+            <!-- Category: السيارات -->
+            <a href="#" class="bg-white p-6 rounded-2xl border shadow-sm hover:shadow-md transition text-center group block">
+                <div class="w-16 h-16 bg-red-100 text-red-600 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl group-hover:bg-red-500 group-hover:text-white transition">
+                    <i class="fa-solid fa-car"></i>
+                </div>
+                <h3 class="font-bold text-sm text-gray-800">السيارات وقطع الغيار</h3>
+                <p class="text-[11px] text-gray-400 mt-1">مركبات، زينة وقطع غيار</p>
+            </a>
+
+            <!-- Category: العقارات -->
+            <a href="#" class="bg-white p-6 rounded-2xl border shadow-sm hover:shadow-md transition text-center group block">
+                <div class="w-16 h-16 bg-green-100 text-green-600 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl group-hover:bg-green-500 group-hover:text-white transition">
+                    <i class="fa-solid fa-house"></i>
+                </div>
+                <h3 class="font-bold text-sm text-gray-800">العقارات والأراضي</h3>
+                <p class="text-[11px] text-gray-400 mt-1">شقق، منازل، أراضي للبيع والإيجار</p>
+            </a>
+
+            <!-- Category: الأثاث -->
+            <a href="#" class="bg-white p-6 rounded-2xl border shadow-sm hover:shadow-md transition text-center group block">
+                <div class="w-16 h-16 bg-purple-100 text-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl group-hover:bg-purple-500 group-hover:text-white transition">
+                    <i class="fa-solid fa-couch"></i>
+                </div>
+                <h3 class="font-bold text-sm text-gray-800">الأثاث والمنزل</h3>
+                <p class="text-[11px] text-gray-400 mt-1">ديكور، غرف، أدوات منزلية</p>
+            </a>
+
+            <!-- Category: خدمات ووظائف -->
+            <a href="#" class="bg-white p-6 rounded-2xl border shadow-sm hover:shadow-md transition text-center group block">
+                <div class="w-16 h-16 bg-yellow-100 text-yellow-600 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl group-hover:bg-yellow-500 group-hover:text-white transition">
+                    <i class="fa-solid fa-briefcase"></i>
+                </div>
+                <h3 class="font-bold text-sm text-gray-800">خدمات ووظائف</h3>
+                <p class="text-[11px] text-gray-400 mt-1">فرص عمل، خدمات تقنية وصيانة</p>
+            </a>
+
+        </div>
+    </div>
+
+</body>
+</html>
