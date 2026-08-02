@@ -4,41 +4,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GRID SOOQ - تسوق كل ما تحتاجه</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .transition-all-custom { transition: all 0.3s ease-in-out; }
+    </style>
 </head>
-<body class="bg-[#f8f9fa] font-sans text-gray-800">
+<body class="bg-[#f8f9fa] font-sans text-gray-800 transition-all-custom">
 
     <!-- Top Bar -->
     <div class="bg-gray-100 text-xs py-2 border-b border-gray-200">
         <div class="container mx-auto px-4 flex justify-between items-center">
-            <!-- Left Side: Chat & App -->
+            <!-- Left Side: Chat, Language & App -->
             <div class="flex items-center space-x-4 space-x-reverse">
                 <a href="messages.html" class="flex items-center gap-1 bg-white border border-gray-300 px-3 py-1 rounded-full text-xs font-bold text-gray-700 hover:text-amber-600 shadow-sm">
                     <i class="fa-regular fa-comments text-amber-500 text-sm"></i>
-                    <span>الدردشة والرسائل</span>
+                    <span data-i18n="chat">الدردشة والرسائل</span>
                     <span class="bg-red-500 text-white text-[9px] px-1.5 py-0.5 rounded-full mr-1">1</span>
                 </a>
                 <span class="bg-amber-100 text-amber-800 px-2 py-1 rounded-md flex items-center gap-1 font-bold">
-                    <i class="fa-solid fa-mobile-screen"></i> حمل التطبيق
+                    <i class="fa-solid fa-mobile-screen"></i> <span data-i18n="downloadApp">حمل التطبيق</span>
                 </span>
-                <span class="flex items-center cursor-pointer text-gray-600">العربية <i class="fa-solid fa-chevron-down mr-1 text-[10px]"></i></span>
-                <a href="help.html" class="text-gray-600 hover:underline">مساعدة</a>
-                <a href="help.html" class="text-gray-600 hover:underline">تتبع الطلبات</a>
+                <!-- زر تغيير اللغة شغال 100% -->
+                <button onclick="toggleLanguage()" class="flex items-center gap-1 bg-white border px-2 py-1 rounded text-gray-700 hover:text-amber-600 font-bold">
+                    <i class="fa-solid fa-globe text-amber-500"></i>
+                    <span id="langLabel">English</span>
+                </button>
+                <a href="help.html" class="text-gray-600 hover:underline" data-i18n="help">مساعدة</a>
+                <a href="help.html" class="text-gray-600 hover:underline" data-i18n="track">تتبع الطلبات</a>
             </div>
 
-            <!-- Right Side: Welcome -->
-            <div class="text-gray-500 flex items-center gap-1">
-                <span>مرحباً بك في Grid Sooq</span>
-                <a href="favorites.html" class="text-amber-600 mr-2 hover:underline font-bold">
-                    <i class="fa-regular fa-heart"></i> المفضلة (<span id="favCount">0</span>)
+            <!-- Right Side: Welcome & Favorites -->
+            <div class="text-gray-500 flex items-center gap-4">
+                <span data-i18n="welcome">مرحباً بك في Grid Sooq</span>
+                <a href="favorites.html" class="text-amber-600 hover:underline font-bold flex items-center gap-1">
+                    <i class="fa-solid fa-heart text-red-500"></i> 
+                    <span data-i18n="favorites">المفضلة</span> 
+                    (<span id="favCount">0</span>)
                 </a>
             </div>
         </div>
     </div>
 
     <!-- Main Header -->
-    <header class="bg-white shadow-sm py-4 border-b">
+    <header class="bg-white shadow-sm py-4 border-b sticky top-0 z-50">
         <div class="container mx-auto px-4 flex items-center justify-between gap-6">
             <!-- Logo -->
             <a href="index.html" class="flex items-center gap-3">
@@ -47,13 +58,13 @@
                 </div>
                 <div>
                     <h1 class="text-2xl font-black tracking-wider text-gray-900 leading-none">GRID SOOQ</h1>
-                    <span class="text-xs text-gray-400 font-medium">تسوق كل ما تحتاجه</span>
+                    <span class="text-xs text-gray-400 font-medium" data-i18n="tagline">تسوق كل ما تحتاجه</span>
                 </div>
             </a>
 
-            <!-- Search Bar (بحث عادي مباشر بدون خيارات) -->
-            <form onsubmit="handleSearch(event)" class="flex-1 max-w-2xl flex items-center border-2 border-amber-500 rounded-lg overflow-hidden bg-white">
-                <input id="searchInput" oninput="liveSearch()" type="text" placeholder="إبحث عن أي شيء (جوال، سيارة، ساعة...)..." class="w-full py-2.5 px-4 outline-none text-sm">
+            <!-- Search Bar (مباشر وبدون قائمة منسدلة + يدعم كود الأدمن) -->
+            <form onsubmit="executeSearch(event)" class="flex-1 max-w-2xl flex items-center border-2 border-amber-500 rounded-lg overflow-hidden bg-white">
+                <input id="searchInput" oninput="liveSearch()" type="text" placeholder="إبحث عن أي شيء (جوال، سيارة، ساعة...)..." class="w-full py-2.5 px-4 outline-none text-sm" data-i18n-ph="searchPlaceholder">
                 <button type="submit" class="bg-amber-500 hover:bg-amber-600 text-white px-6 py-2.5 font-bold">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
@@ -64,8 +75,8 @@
                 <a href="login.html" class="flex items-center gap-2 text-gray-700 hover:text-amber-600">
                     <i class="fa-regular fa-user text-2xl text-gray-600"></i>
                     <div class="text-xs text-right">
-                        <div class="text-gray-400">حسابي</div>
-                        <div class="font-bold">تسجيل دخول</div>
+                        <div class="text-gray-400" data-i18n="myAccount">حسابي</div>
+                        <div class="font-bold" data-i18n="login">تسجيل دخول</div>
                     </div>
                 </a>
                 <a href="cart.html" class="flex items-center gap-2 text-gray-700 hover:text-amber-600 relative">
@@ -74,8 +85,8 @@
                         <span id="cartCount" class="absolute -top-2 -right-2 bg-amber-500 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">0</span>
                     </div>
                     <div class="text-xs text-right">
-                        <div class="text-gray-400">أغراضك</div>
-                        <div class="font-bold" id="cartTotal">0 ر.س</div>
+                        <div class="text-gray-400" data-i18n="myCart">أغراضك</div>
+                        <div class="font-bold text-amber-600" id="cartTotal">0 ر.س</div>
                     </div>
                 </a>
             </div>
@@ -87,15 +98,15 @@
         <div class="container mx-auto px-4 flex items-center justify-between">
             <div class="flex items-center space-x-6 space-x-reverse py-3">
                 <a href="categories.html" class="bg-amber-500 text-white px-5 py-2 rounded-lg font-bold flex items-center gap-2 text-xs hover:bg-amber-600">
-                    <i class="fa-solid fa-bars"></i> كل الأقسام
+                    <i class="fa-solid fa-bars"></i> <span data-i18n="allCategories">كل الأقسام</span>
                 </a>
-                <a href="index.html" class="text-amber-600 font-bold border-b-2 border-amber-600 pb-3 -mb-3">الرئيسية</a>
-                <a href="categories.html" class="text-gray-600 hover:text-amber-600">الأقسام</a>
-                <a href="deals.html" class="text-gray-600 hover:text-amber-600">عروض اليوم</a>
-                <a href="categories.html" class="text-gray-600 hover:text-amber-600">المتجر</a>
-                <a href="#" onclick="checkAuth(event)" class="text-amber-600 font-bold hover:text-amber-700">+ إضافة إعلان</a>
-                <a href="blog.html" class="text-gray-600 hover:text-amber-600">المدونة</a>
-                <a href="help.html" class="text-gray-600 hover:text-amber-600">تواصل معنا</a>
+                <a href="index.html" class="text-amber-600 font-bold border-b-2 border-amber-600 pb-3 -mb-3" data-i18n="home">الرئيسية</a>
+                <a href="categories.html" class="text-gray-600 hover:text-amber-600" data-i18n="categories">الأقسام</a>
+                <a href="deals.html" class="text-gray-600 hover:text-amber-600" data-i18n="dailyDeals">عروض اليوم</a>
+                <a href="categories.html" class="text-gray-600 hover:text-amber-600" data-i18n="store">المتجر</a>
+                <button onclick="handleAddAd(event)" class="text-amber-600 font-bold hover:text-amber-700" data-i18n="addAd">+ إضافة إعلان</button>
+                <a href="blog.html" class="text-gray-600 hover:text-amber-600" data-i18n="blog">المدونة</a>
+                <a href="help.html" class="text-gray-600 hover:text-amber-600" data-i18n="contactUs">تواصل معنا</a>
             </div>
         </div>
     </nav>
@@ -106,31 +117,31 @@
             
             <!-- Sidebar -->
             <aside class="col-span-12 lg:col-span-3 bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
-                <h3 class="font-bold text-amber-600 text-center mb-4 pb-2 border-b">الأقسام الرئيسية</h3>
+                <h3 class="font-bold text-amber-600 text-center mb-4 pb-2 border-b" data-i18n="mainCategories">الأقسام الرئيسية</h3>
                 <ul class="space-y-3 text-xs text-gray-700">
-                    <li onclick="filterCategory('إلكترونيات')" class="flex items-center justify-between hover:text-amber-600 cursor-pointer p-1">
-                        <span class="flex items-center gap-2"><i class="fa-solid fa-tv text-gray-400"></i> الإلكترونيات</span>
+                    <li onclick="filterCategory('إلكترونيات')" class="flex items-center justify-between hover:text-amber-600 cursor-pointer p-2 rounded hover:bg-amber-50">
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-tv text-amber-500"></i> <span data-i18n="electronics">الإلكترونيات</span></span>
                         <i class="fa-solid fa-chevron-left text-[10px] text-gray-400"></i>
                     </li>
-                    <li onclick="filterCategory('منزل')" class="flex items-center justify-between hover:text-amber-600 cursor-pointer p-1">
-                        <span class="flex items-center gap-2"><i class="fa-solid fa-house text-gray-400"></i> المنزل والمطبخ</span>
+                    <li onclick="filterCategory('منزل')" class="flex items-center justify-between hover:text-amber-600 cursor-pointer p-2 rounded hover:bg-amber-50">
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-house text-amber-500"></i> <span data-i18n="homeKitchen">المنزل والمطبخ</span></span>
                         <i class="fa-solid fa-chevron-left text-[10px] text-gray-400"></i>
                     </li>
-                    <li onclick="filterCategory('أزياء')" class="flex items-center justify-between hover:text-amber-600 cursor-pointer p-1">
-                        <span class="flex items-center gap-2"><i class="fa-solid fa-shirt text-gray-400"></i> الأزياء والملابس</span>
+                    <li onclick="filterCategory('أزياء')" class="flex items-center justify-between hover:text-amber-600 cursor-pointer p-2 rounded hover:bg-amber-50">
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-shirt text-amber-500"></i> <span data-i18n="fashion">الأزياء والملابس</span></span>
                         <i class="fa-solid fa-chevron-left text-[10px] text-gray-400"></i>
                     </li>
-                    <li onclick="filterCategory('جوال')" class="flex items-center justify-between hover:text-amber-600 cursor-pointer p-1">
-                        <span class="flex items-center gap-2"><i class="fa-solid fa-mobile-screen-button text-gray-400"></i> الجوالات والأجهزة</span>
+                    <li onclick="filterCategory('جوال')" class="flex items-center justify-between hover:text-amber-600 cursor-pointer p-2 rounded hover:bg-amber-50">
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-mobile-screen-button text-amber-500"></i> <span data-i18n="mobiles">الجوالات والأجهزة</span></span>
                         <i class="fa-solid fa-chevron-left text-[10px] text-gray-400"></i>
                     </li>
-                    <li onclick="filterCategory('سيارات')" class="flex items-center justify-between hover:text-amber-600 cursor-pointer p-1">
-                        <span class="flex items-center gap-2"><i class="fa-solid fa-car text-gray-400"></i> السيارات وقطع الغيار</span>
+                    <li onclick="filterCategory('سيارات')" class="flex items-center justify-between hover:text-amber-600 cursor-pointer p-2 rounded hover:bg-amber-50">
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-car text-amber-500"></i> <span data-i18n="cars">السيارات وقطع الغيار</span></span>
                         <i class="fa-solid fa-chevron-left text-[10px] text-gray-400"></i>
                     </li>
                 </ul>
                 <a href="categories.html" class="mt-4 pt-3 border-t flex items-center justify-center gap-2 text-xs font-bold text-gray-600 hover:text-amber-600 block text-center">
-                    <i class="fa-solid fa-border-all"></i> عرض كل الأقسام
+                    <i class="fa-solid fa-border-all"></i> <span data-i18n="viewAllCategories">عرض كل الأقسام</span>
                 </a>
             </aside>
 
@@ -138,29 +149,31 @@
             <main class="col-span-12 lg:col-span-9">
                 <div class="relative bg-gradient-to-r from-neutral-900 via-neutral-800 to-amber-950 rounded-2xl overflow-hidden p-8 text-white min-h-[340px] flex items-center justify-between shadow-md">
                     <div class="z-10 max-w-md pr-6">
-                        <h2 class="text-4xl font-extrabold mb-2">عروض حصرية</h2>
-                        <p class="text-3xl font-bold text-amber-400 mb-2">خصومات تصل إلى <span class="text-5xl font-black">50%</span></p>
-                        <p class="text-gray-300 text-sm mb-6">على الإلكترونيات والمنتجات المميزة</p>
-                        <a href="deals.html" class="bg-amber-500 hover:bg-amber-600 text-black font-bold px-8 py-2.5 rounded-lg shadow-md inline-block text-sm">تسوق الآن</a>
+                        <h2 class="text-4xl font-extrabold mb-2" data-i18n="bannerTitle">عروض حصرية</h2>
+                        <p class="text-3xl font-bold text-amber-400 mb-2"><span data-i18n="discountsUpTo">خصومات تصل إلى</span> <span class="text-5xl font-black">50%</span></p>
+                        <p class="text-gray-300 text-sm mb-6" data-i18n="bannerDesc">على الإلكترونيات والمنتجات المميزة</p>
+                        <a href="deals.html" class="bg-amber-500 hover:bg-amber-600 text-black font-bold px-8 py-2.5 rounded-lg shadow-md inline-block text-sm" data-i18n="shopNow">تسوق الآن</a>
                     </div>
-                    <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=600&q=80" class="w-80 h-80 object-contain hidden md:block rounded-xl drop-shadow-2xl" alt="Smart Watch Banner">
+                    <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=600&q=80" class="w-80 h-80 object-contain hidden md:block rounded-xl drop-shadow-2xl" alt="Banner Product">
                 </div>
             </main>
         </div>
 
         <!-- Section: أحدث الإعلانات -->
         <div class="flex items-center justify-between mt-10 mb-4">
-            <h3 class="text-lg font-bold" id="sectionHeader">أحدث الإعلانات</h3>
-            <a href="categories.html" class="text-xs font-bold text-amber-600 hover:underline">عرض الكل <i class="fa-solid fa-chevron-left text-[9px]"></i></a>
+            <h3 class="text-lg font-bold" data-i18n="latestAds">أحدث الإعلانات</h3>
+            <button onclick="resetSearch()" class="text-xs font-bold text-amber-600 hover:underline" data-i18n="viewAll">عرض الكل <i class="fa-solid fa-chevron-left text-[9px]"></i></button>
         </div>
 
         <!-- Products Grid -->
         <div id="productsGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
             
             <!-- Card 1 -->
-            <div class="product-card bg-white rounded-xl overflow-hidden border shadow-sm relative group block" data-name="كنبة زاوية فاخرة منزل اثاث" data-price="1450">
-                <span class="absolute top-2 right-2 bg-amber-500 text-white text-[10px] font-bold px-2 py-0.5 rounded z-10">جديد</span>
-                <button onclick="toggleFavorite(this, 'كنبة زاوية فاخرة')" class="fav-btn absolute top-2 left-2 text-gray-400 hover:text-red-500 z-10 p-1"><i class="fa-regular fa-heart"></i></button>
+            <div class="product-card bg-white rounded-xl overflow-hidden border shadow-sm relative group block" data-id="p1" data-name="كنبة زاوية فاخرة منزل اثاث sofa" data-price="1450">
+                <span class="absolute top-2 right-2 bg-amber-500 text-white text-[10px] font-bold px-2 py-0.5 rounded z-10" data-i18n="badgeNew">جديد</span>
+                <button onclick="toggleFavorite(event, 'p1', 'كنبة زاوية فاخرة', 1450, 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=400&q=80')" class="fav-btn absolute top-2 left-2 text-gray-400 hover:text-red-500 z-10 bg-white/80 p-1.5 rounded-full shadow-sm">
+                    <i class="fa-regular fa-heart text-sm"></i>
+                </button>
                 <div class="h-36 bg-gray-100 overflow-hidden">
                     <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover group-hover:scale-105 transition">
                 </div>
@@ -169,15 +182,17 @@
                     <p class="text-[10px] text-gray-400 mt-1"><i class="fa-solid fa-location-dot"></i> الرياض</p>
                     <div class="flex items-center justify-between mt-2">
                         <p class="font-black text-amber-600 text-sm">1,450 ر.س</p>
-                        <button onclick="addToCart('كنبة زاوية فاخرة', 1450)" class="bg-amber-500 hover:bg-amber-600 text-white text-[10px] px-2 py-1 rounded font-bold">+ السلة</button>
+                        <button onclick="addToCart('كنبة زاوية فاخرة', 1450)" class="bg-amber-500 hover:bg-amber-600 text-white text-[10px] px-2 py-1 rounded font-bold" data-i18n="addCartBtn">+ السلة</button>
                     </div>
                 </div>
             </div>
 
             <!-- Card 2 -->
-            <div class="product-card bg-white rounded-xl overflow-hidden border shadow-sm relative group block" data-name="iphone 15 pro max آيفون ايفون جوال" data-price="4999">
-                <span class="absolute top-2 right-2 bg-amber-500 text-white text-[10px] font-bold px-2 py-0.5 rounded z-10">جديد</span>
-                <button onclick="toggleFavorite(this, 'iPhone 15 Pro Max')" class="fav-btn absolute top-2 left-2 text-gray-400 hover:text-red-500 z-10 p-1"><i class="fa-regular fa-heart"></i></button>
+            <div class="product-card bg-white rounded-xl overflow-hidden border shadow-sm relative group block" data-id="p2" data-name="iphone 15 pro max آيفون ايفون جوال" data-price="4999">
+                <span class="absolute top-2 right-2 bg-amber-500 text-white text-[10px] font-bold px-2 py-0.5 rounded z-10" data-i18n="badgeNew">جديد</span>
+                <button onclick="toggleFavorite(event, 'p2', 'iPhone 15 Pro Max', 4999, 'https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=400&q=80')" class="fav-btn absolute top-2 left-2 text-gray-400 hover:text-red-500 z-10 bg-white/80 p-1.5 rounded-full shadow-sm">
+                    <i class="fa-regular fa-heart text-sm"></i>
+                </button>
                 <div class="h-36 bg-gray-100 overflow-hidden">
                     <img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover group-hover:scale-105 transition">
                 </div>
@@ -186,15 +201,17 @@
                     <p class="text-[10px] text-gray-400 mt-1"><i class="fa-solid fa-location-dot"></i> جدة</p>
                     <div class="flex items-center justify-between mt-2">
                         <p class="font-black text-amber-600 text-sm">4,999 ر.س</p>
-                        <button onclick="addToCart('iPhone 15 Pro Max', 4999)" class="bg-amber-500 hover:bg-amber-600 text-white text-[10px] px-2 py-1 rounded font-bold">+ السلة</button>
+                        <button onclick="addToCart('iPhone 15 Pro Max', 4999)" class="bg-amber-500 hover:bg-amber-600 text-white text-[10px] px-2 py-1 rounded font-bold" data-i18n="addCartBtn">+ السلة</button>
                     </div>
                 </div>
             </div>
 
             <!-- Card 3 -->
-            <div class="product-card bg-white rounded-xl overflow-hidden border shadow-sm relative group block" data-name="تويوتا لاند كروزر 2022 سيارة سيارات" data-price="189000">
-                <span class="absolute top-2 right-2 bg-amber-500 text-white text-[10px] font-bold px-2 py-0.5 rounded z-10">جديد</span>
-                <button onclick="toggleFavorite(this, 'تويوتا لاند كروزر 2022')" class="fav-btn absolute top-2 left-2 text-gray-400 hover:text-red-500 z-10 p-1"><i class="fa-regular fa-heart"></i></button>
+            <div class="product-card bg-white rounded-xl overflow-hidden border shadow-sm relative group block" data-id="p3" data-name="تويوتا لاند كروزر 2022 سيارة سيارات toyota car" data-price="189000">
+                <span class="absolute top-2 right-2 bg-amber-500 text-white text-[10px] font-bold px-2 py-0.5 rounded z-10" data-i18n="badgeNew">جديد</span>
+                <button onclick="toggleFavorite(event, 'p3', 'تويوتا لاند كروزر 2022', 189000, 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=400&q=80')" class="fav-btn absolute top-2 left-2 text-gray-400 hover:text-red-500 z-10 bg-white/80 p-1.5 rounded-full shadow-sm">
+                    <i class="fa-regular fa-heart text-sm"></i>
+                </button>
                 <div class="h-36 bg-gray-100 overflow-hidden">
                     <img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover group-hover:scale-105 transition">
                 </div>
@@ -203,15 +220,17 @@
                     <p class="text-[10px] text-gray-400 mt-1"><i class="fa-solid fa-location-dot"></i> الدمام</p>
                     <div class="flex items-center justify-between mt-2">
                         <p class="font-black text-amber-600 text-sm">189,000 ر.س</p>
-                        <button onclick="addToCart('تويوتا لاند كروزر 2022', 189000)" class="bg-amber-500 hover:bg-amber-600 text-white text-[10px] px-2 py-1 rounded font-bold">+ السلة</button>
+                        <button onclick="addToCart('تويوتا لاند كروزر 2022', 189000)" class="bg-amber-500 hover:bg-amber-600 text-white text-[10px] px-2 py-1 rounded font-bold" data-i18n="addCartBtn">+ السلة</button>
                     </div>
                 </div>
             </div>
 
             <!-- Card 4 -->
-            <div class="product-card bg-white rounded-xl overflow-hidden border shadow-sm relative group block" data-name="macbook air m2 ماك بوك كمبيوتر إلكترونيات" data-price="4200">
-                <span class="absolute top-2 right-2 bg-amber-500 text-white text-[10px] font-bold px-2 py-0.5 rounded z-10">جديد</span>
-                <button onclick="toggleFavorite(this, 'MacBook Air M2')" class="fav-btn absolute top-2 left-2 text-gray-400 hover:text-red-500 z-10 p-1"><i class="fa-regular fa-heart"></i></button>
+            <div class="product-card bg-white rounded-xl overflow-hidden border shadow-sm relative group block" data-id="p4" data-name="macbook air m2 ماك بوك كمبيوتر إلكترونيات laptop" data-price="4200">
+                <span class="absolute top-2 right-2 bg-amber-500 text-white text-[10px] font-bold px-2 py-0.5 rounded z-10" data-i18n="badgeNew">جديد</span>
+                <button onclick="toggleFavorite(event, 'p4', 'MacBook Air M2', 4200, 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=400&q=80')" class="fav-btn absolute top-2 left-2 text-gray-400 hover:text-red-500 z-10 bg-white/80 p-1.5 rounded-full shadow-sm">
+                    <i class="fa-regular fa-heart text-sm"></i>
+                </button>
                 <div class="h-36 bg-gray-100 overflow-hidden">
                     <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover group-hover:scale-105 transition">
                 </div>
@@ -220,66 +239,21 @@
                     <p class="text-[10px] text-gray-400 mt-1"><i class="fa-solid fa-location-dot"></i> الرياض</p>
                     <div class="flex items-center justify-between mt-2">
                         <p class="font-black text-amber-600 text-sm">4,200 ر.س</p>
-                        <button onclick="addToCart('MacBook Air M2', 4200)" class="bg-amber-500 hover:bg-amber-600 text-white text-[10px] px-2 py-1 rounded font-bold">+ السلة</button>
+                        <button onclick="addToCart('MacBook Air M2', 4200)" class="bg-amber-500 hover:bg-amber-600 text-white text-[10px] px-2 py-1 rounded font-bold" data-i18n="addCartBtn">+ السلة</button>
                     </div>
                 </div>
             </div>
 
             <!-- Card 5 -->
-            <div class="product-card bg-white rounded-xl overflow-hidden border shadow-sm relative group block" data-name="ساعة يد رجالية فاخرة أزياء اكسسوارات" data-price="350">
-                <span class="absolute top-2 right-2 bg-amber-500 text-white text-[10px] font-bold px-2 py-0.5 rounded z-10">جديد</span>
-                <button onclick="toggleFavorite(this, 'ساعة يد رجالية')" class="fav-btn absolute top-2 left-2 text-gray-400 hover:text-red-500 z-10 p-1"><i class="fa-regular fa-heart"></i></button>
+            <div class="product-card bg-white rounded-xl overflow-hidden border shadow-sm relative group block" data-id="p5" data-name="ساعة يد رجالية فاخرة أزياء اكسسوارات watch" data-price="350">
+                <span class="absolute top-2 right-2 bg-amber-500 text-white text-[10px] font-bold px-2 py-0.5 rounded z-10" data-i18n="badgeNew">جديد</span>
+                <button onclick="toggleFavorite(event, 'p5', 'ساعة يد رجالية', 350, 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=400&q=80')" class="fav-btn absolute top-2 left-2 text-gray-400 hover:text-red-500 z-10 bg-white/80 p-1.5 rounded-full shadow-sm">
+                    <i class="fa-regular fa-heart text-sm"></i>
+                </button>
                 <div class="h-36 bg-gray-100 overflow-hidden">
                     <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover group-hover:scale-105 transition">
                 </div>
                 <div class="p-3 text-right">
                     <h4 class="font-bold text-xs truncate">ساعة يد رجالية فاخرة</h4>
                     <p class="text-[10px] text-gray-400 mt-1"><i class="fa-solid fa-location-dot"></i> جدة</p>
-                    <div class="flex items-center justify-between mt-2">
-                        <p class="font-black text-amber-600 text-sm">350 ر.س</p>
-                        <button onclick="addToCart('ساعة يد رجالية', 350)" class="bg-amber-500 hover:bg-amber-600 text-white text-[10px] px-2 py-1 rounded font-bold">+ السلة</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 6 -->
-            <div class="product-card bg-white rounded-xl overflow-hidden border shadow-sm relative group block" data-name="samsung galaxy s24 سامسونج جوال إلكترونيات" data-price="2799">
-                <span class="absolute top-2 right-2 bg-amber-500 text-white text-[10px] font-bold px-2 py-0.5 rounded z-10">جديد</span>
-                <button onclick="toggleFavorite(this, 'Samsung S24')" class="fav-btn absolute top-2 left-2 text-gray-400 hover:text-red-500 z-10 p-1"><i class="fa-regular fa-heart"></i></button>
-                <div class="h-36 bg-gray-100 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover group-hover:scale-105 transition">
-                </div>
-                <div class="p-3 text-right">
-                    <h4 class="font-bold text-xs truncate">Samsung Galaxy S24</h4>
-                    <p class="text-[10px] text-gray-400 mt-1"><i class="fa-solid fa-location-dot"></i> الرياض</p>
-                    <div class="flex items-center justify-between mt-2">
-                        <p class="font-black text-amber-600 text-sm">2,799 ر.س</p>
-                        <button onclick="addToCart('Samsung S24', 2799)" class="bg-amber-500 hover:bg-amber-600 text-white text-[10px] px-2 py-1 rounded font-bold">+ السلة</button>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <!-- JavaScript التفاعلي للبحث والأزرار -->
-    <script>
-        // 1. نظام البحث الفوري الحقيقي + كود الأدمن
-        function handleSearch(e) {
-            e.preventDefault();
-            const query = document.getElementById('searchInput').value.trim();
-            if (query === 'lobbyadmin0P') {
-                window.location.href = 'admin.html';
-            }
-        }
-
-        function liveSearch() {
-            const query = document.getElementById('searchInput').value.toLowerCase().trim();
-            const cards = document.querySelectorAll('.product-card');
-            
-            if (query === 'lobbyadmin0p') return;
-
-            cards.forEach(card => {
-                const name = card.getAttribute('data-name').toLowerCase();
-                if (name.includes(query) || query === '') {
-               
+       
