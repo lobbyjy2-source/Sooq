@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GRID SOOQ - المساعدة والتواصل</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-[#f8f9fa] font-sans text-gray-800">
+    <header class="bg-white border-b sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-2">
+                <div class="bg-amber-500 text-white p-2 rounded-lg"><i class="fa-solid fa-bag-shopping"></i></div>
+                <span class="text-xl font-black text-gray-900">GRID SOOQ</span>
+            </a>
+            <a href="index.html" class="text-xs font-bold text-amber-600 hover:underline"><i class="fa-solid fa-arrow-right"></i> العودة للرئيسية</a>
+        </div>
+    </header>
+
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+        
+        <!-- Track Order Section -->
+        <div class="bg-white rounded-2xl p-6 shadow-sm border mb-8">
+            <h2 class="text-xl font-bold text-gray-900 mb-2 flex items-center gap-2">
+                <i class="fa-solid fa-truck-fast text-amber-500"></i> تتبع طلبك
+            </h2>
+            <p class="text-xs text-gray-500 mb-4">أدخل رقم الشحنة أو رقم الطلب للاطلاع على حالة التوصيل المباشرة.</p>
+            <form onsubmit="trackOrder(event)" class="flex gap-2">
+                <input id="trackingNum" type="text" placeholder="مثال: GS-98421" required class="flex-1 border border-gray-300 rounded-xl px-4 py-2.5 text-sm outline-none focus:border-amber-500">
+                <button type="submit" class="bg-amber-500 hover:bg-amber-600 text-white font-bold px-6 py-2.5 rounded-xl text-sm transition">تتبع</button>
+            </form>
+            <div id="trackResult" class="hidden mt-4 p-4 bg-amber-50 border border-amber-200 rounded-xl text-xs text-amber-900"></div>
+        </div>
+
+        <!-- Contact & Support Section -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-white rounded-2xl p-6 shadow-sm border">
+                <h3 class="font-bold text-gray-900 mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-envelope text-amber-500"></i> أرسل لنا رسالة
+                </h3>
+                <form onsubmit="alert('تم إرسال رسالتك بنجاح! سيتواصل معك فريق الدعم قريباً.'); event.preventDefault();" class="space-y-4 text-xs">
+                    <div>
+                        <label class="block font-bold mb-1">الاسم الكامل</label>
+                        <input type="text" required class="w-full border rounded-lg p-2.5 outline-none focus:border-amber-500">
+                    </div>
+                    <div>
+                        <label class="block font-bold mb-1">البريد الإلكتروني</label>
+                        <input type="email" required class="w-full border rounded-lg p-2.5 outline-none focus:border-amber-500">
+                    </div>
+                    <div>
+                        <label class="block font-bold mb-1">الرسالة</label>
+                        <textarea rows="4" required class="w-full border rounded-lg p-2.5 outline-none focus:border-amber-500"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-amber-500 text-white font-bold py-2.5 rounded-lg hover:bg-amber-600 transition">إرسالالرسالة</button>
+                </form>
+            </div>
+
+            <div class="bg-white rounded-2xl p-6 shadow-sm border flex flex-col justify-between">
+                <div>
+                    <h3 class="font-bold text-gray-900 mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-headset text-amber-500"></i> قنوات التواصل المباشرة
+                    </h3>
+                    <div class="space-y-4 text-xs">
+                        <div class="flex items-center gap-3">
+                            <div class="w-9 h-9 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center font-bold"><i class="fa-solid fa-phone"></i></div>
+                            <div>
+                                <div class="text-gray-400">الدعم الهاتفي</div>
+                                <div class="font-bold text-gray-800">+966 9200 00000</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-9 h-9 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center font-bold"><i class="fa-solid fa-paper-plane"></i></div>
+                            <div>
+                                <div class="text-gray-400">البريد الرسمي</div>
+                                <div class="font-bold text-gray-800">support@gridsooq.com</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-9 h-9 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center font-bold"><i class="fa-solid fa-clock"></i></div>
+                            <div>
+                                <div class="text-gray-400">ساعات العمل</div>
+                                <div class="font-bold text-gray-800">يومياً من 9:00 صباحاً - 10:00 مساءً</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function trackOrder(e) {
+            e.preventDefault();
+            const num = document.getElementById('trackingNum').value;
+            const res = document.getElementById('trackResult');
+            res.classList.remove('hidden');
+            res.innerHTML = `<strong>حالة الشحنة (${num}):</strong> الطلب قيد التوصيل الآن مع المندوب - المتوقع الوصول اليوم خلال 3 ساعات.`;
+        }
+    </script>
+</body>
+</html>
+
