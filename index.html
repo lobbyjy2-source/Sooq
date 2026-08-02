@@ -6,21 +6,6 @@
     <title>GRID SOOQ - تسوق كل ما تحتاجه</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        gold: {
-                            500: '#c59b27',
-                            600: '#b0871e',
-                            700: '#946f17',
-                        }
-                    }
-                }
-            }
-        }
-    </script>
 </head>
 <body class="bg-gray-100 font-sans text-gray-800">
 
@@ -45,7 +30,7 @@
     <header class="bg-white shadow-sm py-4 border-b">
         <div class="container mx-auto px-4 flex items-center justify-between gap-6">
             <!-- Logo -->
-            <a href="#" class="flex items-center gap-2">
+            <a href="index.html" class="flex items-center gap-2">
                 <div class="bg-amber-500 text-white p-2 rounded-lg">
                     <i class="fa-solid fa-bag-shopping text-2xl"></i>
                 </div>
@@ -68,7 +53,7 @@
 
             <!-- User Actions -->
             <div class="flex items-center gap-6">
-                <a href="#" class="flex items-center gap-2 text-gray-700 hover:text-amber-600">
+                <a href="login.html" class="flex items-center gap-2 text-gray-700 hover:text-amber-600">
                     <i class="fa-regular fa-user text-xl"></i>
                     <div class="text-xs text-right">
                         <div>حسابي</div>
@@ -96,11 +81,11 @@
                 <button class="bg-amber-500 text-white px-4 py-2 rounded-md font-bold flex items-center gap-2 text-xs">
                     <i class="fa-solid fa-bars"></i> كل الأقسام
                 </button>
-                <a href="#" class="text-amber-600 font-bold border-b-2 border-amber-600 pb-3 -mb-3">الرئيسية</a>
+                <a href="index.html" class="text-amber-600 font-bold border-b-2 border-amber-600 pb-3 -mb-3">الرئيسية</a>
                 <a href="#" class="text-gray-600 hover:text-amber-600">الأقسام</a>
                 <a href="#" class="text-gray-600 hover:text-amber-600">عروض اليوم</a>
                 <a href="#" class="text-gray-600 hover:text-amber-600">المتجر</a>
-                <a href="#" class="text-gray-600 hover:text-amber-600">إضافة إعلان</a>
+                <a href="add-ad.html" class="text-amber-600 font-bold hover:text-amber-700">+ إضافة إعلان</a>
                 <a href="#" class="text-gray-600 hover:text-amber-600">المدونة</a>
                 <a href="#" class="text-gray-600 hover:text-amber-600">تواصل معنا</a>
             </div>
@@ -111,7 +96,7 @@
     <div class="container mx-auto px-4 py-6">
         <div class="grid grid-cols-12 gap-6">
             
-            <!-- Sidebar (Categories) -->
+            <!-- Sidebar -->
             <aside class="col-span-3 bg-white rounded-xl p-4 shadow-sm border border-gray-100 hidden lg:block">
                 <h3 class="font-bold text-amber-600 mb-4 pb-2 border-b">الأقسام الرئيسية</h3>
                 <ul class="space-y-3 text-xs text-gray-700">
@@ -135,142 +120,34 @@
                         <span class="flex items-center gap-2"><i class="fa-solid fa-car text-gray-400"></i> السيارات وقطع الغيار</span>
                         <i class="fa-solid fa-chevron-left text-[10px]"></i>
                     </li>
-                    <li class="flex items-center justify-between hover:text-amber-600 cursor-pointer">
-                        <span class="flex items-center gap-2"><i class="fa-solid fa-sparkles text-gray-400"></i> الجمال والصحة</span>
-                        <i class="fa-solid fa-chevron-left text-[10px]"></i>
-                    </li>
-                    <li class="flex items-center justify-between hover:text-amber-600 cursor-pointer">
-                        <span class="flex items-center gap-2"><i class="fa-solid fa-dumbbell text-gray-400"></i> الرياضة واللياقة</span>
-                        <i class="fa-solid fa-chevron-left text-[10px]"></i>
-                    </li>
-                    <li class="flex items-center justify-between hover:text-amber-600 cursor-pointer">
-                        <span class="flex items-center gap-2"><i class="fa-solid fa-baby text-gray-400"></i> الأطفال والألعاب</span>
-                        <i class="fa-solid fa-chevron-left text-[10px]"></i>
-                    </li>
                 </ul>
-                <div class="mt-4 pt-3 border-t text-center">
-                    <a href="#" class="text-xs text-amber-600 font-bold flex items-center justify-center gap-1">
-                        <i class="fa-solid fa-border-all"></i> عرض كل الأقسام
-                    </a>
-                </div>
             </aside>
 
-            <!-- Main Hero Banner -->
+            <!-- Main Banner -->
             <main class="col-span-12 lg:col-span-9">
                 <div class="relative bg-gradient-to-r from-neutral-900 via-neutral-800 to-amber-950 rounded-2xl overflow-hidden p-8 text-white min-h-[320px] flex items-center justify-between shadow-lg">
                     <div class="z-10 max-w-md">
                         <h2 class="text-4xl font-extrabold mb-2">عروض حصرية</h2>
                         <p class="text-3xl font-bold text-amber-400 mb-2">خصومات تصل إلى <span class="text-5xl font-black">50%</span></p>
                         <p class="text-gray-300 text-sm mb-6">على الإلكترونيات والمنتجات المميزة</p>
-                        <button class="bg-amber-500 hover:bg-amber-600 text-black font-bold px-8 py-3 rounded-lg shadow-lg">تسوق الآن</button>
+                        <a href="product.html" class="bg-amber-500 hover:bg-amber-600 text-black font-bold px-8 py-3 rounded-lg shadow-lg inline-block">تسوق الآن</a>
                     </div>
-
                     <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=600&q=80" class="w-72 h-72 object-contain hidden md:block rounded-xl drop-shadow-2xl" alt="Smart Watch Banner">
-                </div>
-
-                <!-- Features Ribbon -->
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
-                    <div class="bg-white p-4 rounded-xl flex items-center gap-3 border shadow-sm">
-                        <i class="fa-solid fa-headset text-amber-500 text-2xl"></i>
-                        <div class="text-xs">
-                            <h4 class="font-bold">دعم العملاء</h4>
-                            <p class="text-gray-400">24/7</p>
-                        </div>
-                    </div>
-                    <div class="bg-white p-4 rounded-xl flex items-center gap-3 border shadow-sm">
-                        <i class="fa-solid fa-tag text-amber-500 text-2xl"></i>
-                        <div class="text-xs">
-                            <h4 class="font-bold">أفضل الأسعار</h4>
-                            <p class="text-gray-400">توفير دائم</p>
-                        </div>
-                    </div>
-                    <div class="bg-white p-4 rounded-xl flex items-center gap-3 border shadow-sm">
-                        <i class="fa-solid fa-shield-halved text-amber-500 text-2xl"></i>
-                        <div class="text-xs">
-                            <h4 class="font-bold">دفع آمن 100%</h4>
-                            <p class="text-gray-400">لجميع مشترياتك</p>
-                        </div>
-                    </div>
-                    <div class="bg-white p-4 rounded-xl flex items-center gap-3 border shadow-sm">
-                        <i class="fa-solid fa-truck-fast text-amber-500 text-2xl"></i>
-                        <div class="text-xs">
-                            <h4 class="font-bold">توصيل سريع</h4>
-                            <p class="text-gray-400">إلى جميع المدن</p>
-                        </div>
-                    </div>
                 </div>
             </main>
         </div>
 
-        <!-- Latest Ads Grid Header -->
+        <!-- Latest Ads -->
         <div class="flex items-center justify-between mt-10 mb-4">
             <h3 class="text-xl font-bold">أحدث الإعلانات</h3>
-            <a href="#" class="text-xs text-amber-600 font-bold flex items-center gap-1">عرض الكل <i class="fa-solid fa-chevron-left text-[10px]"></i></a>
         </div>
 
-        <!-- Products Grid (6 Cards with placeholder images) -->
+        <!-- Products Grid -->
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
 
-            <!-- Card 1 -->
-            <div class="bg-white rounded-xl overflow-hidden border shadow-sm relative group">
+            <!-- Card 1 (iPhone -> Links to product.html) -->
+            <a href="product.html" class="bg-white rounded-xl overflow-hidden border shadow-sm relative group block">
                 <span class="absolute top-2 right-2 bg-amber-500 text-white text-[10px] font-bold px-2 py-0.5 rounded z-10">جديد</span>
-                <button class="absolute top-2 left-2 text-gray-400 hover:text-red-500 z-10"><i class="fa-regular fa-heart"></i></button>
-                <div class="h-40 bg-gray-100 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover group-hover:scale-105 transition" alt="Samsung">
-                </div>
-                <div class="p-3 text-right">
-                    <h4 class="font-bold text-xs truncate">Samsung Galaxy S24</h4>
-                    <p class="text-[10px] text-gray-400 mt-1"><i class="fa-solid fa-location-dot"></i> الرياض</p>
-                    <p class="font-black text-amber-600 mt-2 text-sm">2,799 ر.س</p>
-                </div>
-            </div>
-
-            <!-- Card 2 -->
-            <div class="bg-white rounded-xl overflow-hidden border shadow-sm relative group">
-                <span class="absolute top-2 right-2 bg-amber-500 text-white text-[10px] font-bold px-2 py-0.5 rounded z-10">جديد</span>
-                <button class="absolute top-2 left-2 text-gray-400 hover:text-red-500 z-10"><i class="fa-regular fa-heart"></i></button>
-                <div class="h-40 bg-gray-100 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover group-hover:scale-105 transition" alt="Watch">
-                </div>
-                <div class="p-3 text-right">
-                    <h4 class="font-bold text-xs truncate">ساعة يد رجالية فاخرة</h4>
-                    <p class="text-[10px] text-gray-400 mt-1"><i class="fa-solid fa-location-dot"></i> جدة</p>
-                    <p class="font-black text-amber-600 mt-2 text-sm">350 ر.س</p>
-                </div>
-            </div>
-
-            <!-- Card 3 -->
-            <div class="bg-white rounded-xl overflow-hidden border shadow-sm relative group">
-                <span class="absolute top-2 right-2 bg-amber-500 text-white text-[10px] font-bold px-2 py-0.5 rounded z-10">جديد</span>
-                <button class="absolute top-2 left-2 text-gray-400 hover:text-red-500 z-10"><i class="fa-regular fa-heart"></i></button>
-                <div class="h-40 bg-gray-100 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover group-hover:scale-105 transition" alt="MacBook">
-                </div>
-                <div class="p-3 text-right">
-                    <h4 class="font-bold text-xs truncate">MacBook Air M2</h4>
-                    <p class="text-[10px] text-gray-400 mt-1"><i class="fa-solid fa-location-dot"></i> الرياض</p>
-                    <p class="font-black text-amber-600 mt-2 text-sm">4,200 ر.س</p>
-                </div>
-            </div>
-
-            <!-- Card 4 -->
-            <div class="bg-white rounded-xl overflow-hidden border shadow-sm relative group">
-                <span class="absolute top-2 right-2 bg-amber-500 text-white text-[10px] font-bold px-2 py-0.5 rounded z-10">جديد</span>
-                <button class="absolute top-2 left-2 text-gray-400 hover:text-red-500 z-10"><i class="fa-regular fa-heart"></i></button>
-                <div class="h-40 bg-gray-100 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover group-hover:scale-105 transition" alt="Car">
-                </div>
-                <div class="p-3 text-right">
-                    <h4 class="font-bold text-xs truncate">تويوتا لاندكروزر 2022</h4>
-                    <p class="text-[10px] text-gray-400 mt-1"><i class="fa-solid fa-location-dot"></i> الدمام</p>
-                    <p class="font-black text-amber-600 mt-2 text-sm">189,000 ر.س</p>
-                </div>
-            </div>
-
-            <!-- Card 5 -->
-            <div class="bg-white rounded-xl overflow-hidden border shadow-sm relative group">
-                <span class="absolute top-2 right-2 bg-amber-500 text-white text-[10px] font-bold px-2 py-0.5 rounded z-10">جديد</span>
-                <button class="absolute top-2 left-2 text-gray-400 hover:text-red-500 z-10"><i class="fa-regular fa-heart"></i></button>
                 <div class="h-40 bg-gray-100 overflow-hidden">
                     <img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover group-hover:scale-105 transition" alt="iPhone">
                 </div>
@@ -279,44 +156,23 @@
                     <p class="text-[10px] text-gray-400 mt-1"><i class="fa-solid fa-location-dot"></i> جدة</p>
                     <p class="font-black text-amber-600 mt-2 text-sm">4,999 ر.س</p>
                 </div>
-            </div>
+            </a>
 
-            <!-- Card 6 -->
-            <div class="bg-white rounded-xl overflow-hidden border shadow-sm relative group">
+            <!-- Card 2 -->
+            <a href="product.html" class="bg-white rounded-xl overflow-hidden border shadow-sm relative group block">
                 <span class="absolute top-2 right-2 bg-amber-500 text-white text-[10px] font-bold px-2 py-0.5 rounded z-10">جديد</span>
-                <button class="absolute top-2 left-2 text-gray-400 hover:text-red-500 z-10"><i class="fa-regular fa-heart"></i></button>
                 <div class="h-40 bg-gray-100 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover group-hover:scale-105 transition" alt="Sofa">
+                    <img src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover group-hover:scale-105 transition" alt="Samsung">
                 </div>
                 <div class="p-3 text-right">
-                    <h4 class="font-bold text-xs truncate">كنبة زاوية فاخرة</h4>
+                    <h4 class="font-bold text-xs truncate">Samsung S24</h4>
                     <p class="text-[10px] text-gray-400 mt-1"><i class="fa-solid fa-location-dot"></i> الرياض</p>
-                    <p class="font-black text-amber-600 mt-2 text-sm">1,450 ر.س</p>
+                    <p class="font-black text-amber-600 mt-2 text-sm">2,799 ر.س</p>
                 </div>
-            </div>
+            </a>
 
         </div>
+    </div>
 
-        <!-- 3 Bottom Banners Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-            <div class="bg-black text-white p-6 rounded-2xl flex items-center justify-between">
-                <div>
-                    <h4 class="font-bold text-lg">عروض الإلكترونيات</h4>
-                    <p class="text-xs text-amber-400 mt-1 font-bold">خصومات حتى 40%</p>
-                    <button class="mt-4 bg-amber-500 text-black font-bold text-xs px-4 py-2 rounded">تسوق الآن</button>
-                </div>
-                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=200&q=80" class="w-20 h-20 object-contain" alt="Electronics">
-            </div>
-
-            <div class="bg-amber-600 text-white p-6 rounded-2xl flex items-center justify-between">
-                <div>
-                    <h4 class="font-bold text-lg">أزياء وإكسسوارات</h4>
-                    <p class="text-xs text-gray-100 mt-1">جديدنا وصل</p>
-                    <button class="mt-4 bg-white text-amber-700 font-bold text-xs px-4 py-2 rounded">تسوق الآن</button>
-                </div>
-                <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=200&q=80" class="w-20 h-20 object-contain" alt="Bags">
-            </div>
-
-            <div class="bg-amber-100 text-gray-800 p-6 rounded-2xl flex items-center justify-between border border-amber-200">
-                <div>
-                  
+</body>
+</html>
