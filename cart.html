@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GRID SOOQ - سلة المشتريات</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-100 font-sans text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm py-4 border-b">
+        <div class="container mx-auto px-4 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-2">
+                <div class="bg-amber-500 text-white p-2 rounded-lg">
+                    <i class="fa-solid fa-bag-shopping text-xl"></i>
+                </div>
+                <span class="text-xl font-black text-gray-900">GRID SOOQ</span>
+            </a>
+            <a href="index.html" class="text-xs font-bold text-amber-600 hover:underline">
+                <i class="fa-solid fa-arrow-right ml-1"></i> العودة للرئيسية
+            </a>
+        </div>
+    </header>
+
+    <!-- Cart Content -->
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-2xl font-black mb-6">سلة المشتريات (3 منتجات)</h1>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            
+            <!-- Cart Items List -->
+            <div class="lg:col-span-2 space-y-4">
+                
+                <!-- Item 1 -->
+                <div class="bg-white p-4 rounded-2xl border shadow-sm flex items-center justify-between gap-4">
+                    <img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=200&q=80" class="w-20 h-20 object-cover rounded-xl" alt="iPhone">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-sm">iPhone 15 Pro Max</h3>
+                        <p class="text-xs text-gray-400">اللون: تيتانيوم طبيعي</p>
+                        <p class="font-black text-amber-600 mt-1 text-sm">4,999 ر.س</p>
+                    </div>
+                    <div class="flex items-center gap-2 border rounded-lg px-2 py-1">
+                        <button class="text-gray-500 font-bold px-1">-</button>
+                        <span class="text-xs font-bold">1</span>
+                        <button class="text-gray-500 font-bold px-1">+</button>
+                    </div>
+                    <button class="text-gray-400 hover:text-red-500 p-2"><i class="fa-regular fa-trash-can"></i></button>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="bg-white p-4 rounded-2xl border shadow-sm flex items-center justify-between gap-4">
+                    <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=200&q=80" class="w-20 h-20 object-cover rounded-xl" alt="Watch">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-sm">ساعة يد رجالية فاخرة</h3>
+                        <p class="text-xs text-gray-400">اللون: أسود ذهبي</p>
+                        <p class="font-black text-amber-600 mt-1 text-sm">350 ر.س</p>
+                    </div>
+                    <div class="flex items-center gap-2 border rounded-lg px-2 py-1">
+                        <button class="text-gray-500 font-bold px-1">-</button>
+                        <span class="text-xs font-bold">2</span>
+                        <button class="text-gray-500 font-bold px-1">+</button>
+                    </div>
+                    <button class="text-gray-400 hover:text-red-500 p-2"><i class="fa-regular fa-trash-can"></i></button>
+                </div>
+
+            </div>
+
+            <!-- Order Summary -->
+            <div class="bg-white p-6 rounded-2xl border shadow-sm h-fit space-y-4">
+                <h3 class="font-bold text-lg border-b pb-3">ملخص الطلب</h3>
+                
+                <div class="flex justify-between text-xs text-gray-600">
+                    <span>المجموع الفرعي</span>
+                    <span class="font-bold text-gray-900">5,699 ر.س</span>
+                </div>
+                <div class="flex justify-between text-xs text-gray-600">
+                    <span>التوصيل</span>
+                    <span class="font-bold text-green-600">مجاني</span>
+                </div>
+                <hr>
+                <div class="flex justify-between text-sm font-black">
+                    <span>الإجمالي</span>
+                    <span class="text-amber-600">5,699 ر.س</span>
+                </div>
+
+                <button class="w-full bg-amber-500 hover:bg-amber-600 text-white font-bold py-3.5 rounded-xl text-xs transition mt-2">
+                    متابعة عملية الشراء
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
+
