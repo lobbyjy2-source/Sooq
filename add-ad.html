@@ -7,87 +7,65 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="bg-gray-100 font-sans text-gray-800">
-
-    <header class="bg-white shadow-sm py-4 border-b">
+<body class="bg-[#f8f9fa] font-sans text-gray-800">
+    <header class="bg-white border-b py-4">
         <div class="container mx-auto px-4 flex items-center justify-between">
             <a href="index.html" class="flex items-center gap-2">
-                <div class="bg-amber-500 text-white p-2 rounded-lg">
-                    <i class="fa-solid fa-bag-shopping text-xl"></i>
-                </div>
+                <div class="bg-amber-500 text-white p-2 rounded-lg"><i class="fa-solid fa-bag-shopping"></i></div>
                 <span class="text-xl font-black text-gray-900">GRID SOOQ</span>
             </a>
-            <a href="index.html" class="text-xs font-bold text-amber-600 hover:underline">
-                <i class="fa-solid fa-arrow-right ml-1"></i> العودة للرئيسية
-            </a>
+            <a href="index.html" class="text-xs font-bold text-amber-600 hover:underline">إلغاء والعودة</a>
         </div>
     </header>
 
     <div class="container mx-auto px-4 py-8 max-w-2xl">
-        <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+        <div class="bg-white rounded-2xl p-6 shadow-sm border">
+            <h2 class="text-xl font-bold mb-6 text-gray-900 border-b pb-3">+ نشر إعلان جديد</h2>
             
-            <div class="text-center mb-6">
-                <h1 class="text-2xl font-black text-gray-900">أضف إعلانك الجديد</h1>
-                <p class="text-xs text-gray-400 mt-1">أدخل بيانات السلعة لنشرها مباشرة</p>
-            </div>
-
-            <form class="space-y-4 text-xs">
-                
+            <form onsubmit="saveAd(event)" class="space-y-4 text-xs">
                 <div>
-                    <label class="block font-bold mb-1 text-gray-700">عنوان الإعلان</label>
-                    <input type="text" placeholder="اكتب عنوان الإعلان هنا..." class="w-full p-3 border rounded-xl outline-none focus:border-amber-500">
+                    <label class="block font-bold mb-1">عنوان الإعلان</label>
+                    <input type="text" placeholder="مثال: سيارة تويوتا كامري 2023 ممتازة" required class="w-full border rounded-lg p-3 outline-none focus:border-amber-500">
                 </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="grid grid-cols-2 gap-4">
                     <div>
-                        <label class="block font-bold mb-1 text-gray-700">القسم الرئيسي</label>
-                        <select class="w-full p-3 border rounded-xl outline-none focus:border-amber-500 bg-white">
-                            <option value="">اختر القسم...</option>
-                            <option>الإلكترونيات</option>
-                            <option>السيارات وقطع الغيار</option>
-                            <option>عقارات</option>
-                            <option>أثاث ومنزل</option>
-                            <option>أزياء وملابس</option>
+                        <label class="block font-bold mb-1">القسم</label>
+                        <select required class="w-full border rounded-lg p-3 outline-none focus:border-amber-500 bg-white">
+                            <option value="electronics">الإلكترونيات</option>
+                            <option value="home">المنزل والمطبخ</option>
+                            <option value="fashion">الأزياء والملابس</option>
+                            <option value="mobiles">الجوالات والأجهزة</option>
+                            <option value="cars">السيارات وقطع الغيار</option>
                         </select>
                     </div>
                     <div>
-                        <label class="block font-bold mb-1 text-gray-700">المدينة</label>
-                        <select class="w-full p-3 border rounded-xl outline-none focus:border-amber-500 bg-white">
-                            <option value="">اختر المدينة...</option>
-                            <option>عمان</option>
-                            <option>إربد</option>
-                            <option>الزرقاء</option>
-                            <option>العقبة</option>
-                        </select>
+                        <label class="block font-bold mb-1">السعر (ر.س)</label>
+                        <input type="number" placeholder="0.00" required class="w-full border rounded-lg p-3 outline-none focus:border-amber-500">
                     </div>
                 </div>
 
                 <div>
-                    <label class="block font-bold mb-1 text-gray-700">السعر (د.أ)</label>
-                    <input type="number" placeholder="أدخل السعر" class="w-full p-3 border rounded-xl outline-none focus:border-amber-500">
+                    <label class="block font-bold mb-1">تفاصيل الإعلان</label>
+                    <textarea rows="4" placeholder="اكتب وصفاً دقيقاً للمنتج وحالته..." required class="w-full border rounded-lg p-3 outline-none focus:border-amber-500"></textarea>
                 </div>
 
                 <div>
-                    <label class="block font-bold mb-1 text-gray-700">الوصف</label>
-                    <textarea rows="4" placeholder="اكتب تفاصيل المنتوج..." class="w-full p-3 border rounded-xl outline-none focus:border-amber-500"></textarea>
+                    <label class="block font-bold mb-1">رابط صورة المنتج</label>
+                    <input type="url" placeholder="https://example.com/image.jpg" required class="w-full border rounded-lg p-3 outline-none focus:border-amber-500">
                 </div>
 
-                <div>
-                    <label class="block font-bold mb-1 text-gray-700">صور المنتج</label>
-                    <div class="border-2 border-dashed border-gray-300 rounded-xl p-6 text-center cursor-pointer hover:border-amber-500 transition">
-                        <i class="fa-solid fa-cloud-arrow-up text-3xl text-gray-400 mb-2"></i>
-                        <p class="text-gray-500 font-bold">اضغط لرفع الصور</p>
-                    </div>
-                </div>
-
-                <button type="submit" class="w-full bg-amber-500 hover:bg-amber-600 text-white font-bold py-3.5 rounded-xl text-sm transition mt-4">
-                    نشر الإعلان الآن
-                </button>
-
+                <button type="submit" class="w-full bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 rounded-xl transition">نشر الإعلان الآن</button>
             </form>
-
         </div>
     </div>
 
+    <script>
+        function saveAd(e) {
+            e.preventDefault();
+            alert('تم نشر إعلانك بنجاح وسوف يظهر في نتائج البحث مباشرة!');
+            window.location.href = 'index.html';
+        }
+    </script>
 </body>
 </html>
