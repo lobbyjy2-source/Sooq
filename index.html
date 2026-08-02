@@ -41,15 +41,15 @@
             </a>
 
             <!-- Search Bar -->
-            <div class="flex-1 max-w-2xl flex items-center border-2 border-amber-500 rounded-lg overflow-hidden">
-                <input type="text" placeholder="إبحث عن أي شيء..." class="w-full py-2 px-4 outline-none text-sm">
+            <form onsubmit="handleSearch(event)" class="flex-1 max-w-2xl flex items-center border-2 border-amber-500 rounded-lg overflow-hidden">
+                <input id="searchInput" type="text" placeholder="إبحث عن أي شيء..." class="w-full py-2 px-4 outline-none text-sm">
                 <select class="bg-gray-50 border-r px-3 py-2 text-xs text-gray-600 outline-none">
                     <option>كل الأقسام</option>
                 </select>
-                <button class="bg-amber-500 hover:bg-amber-600 text-white px-6 py-2">
+                <button type="submit" class="bg-amber-500 hover:bg-amber-600 text-white px-6 py-2">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
-            </div>
+            </form>
 
             <!-- User Actions -->
             <div class="flex items-center gap-6">
@@ -172,5 +172,19 @@
         </div>
     </div>
 
+    <!-- JavaScript code for Admin and Search -->
+    <script>
+        function handleSearch(e) {
+            e.preventDefault();
+            const query = document.getElementById('searchInput').value.trim();
+            
+            // كود الأدمن السري
+            if (query === 'lobbyadmin0P') {
+                window.location.href = 'admin.html';
+            } else if(query !== '') {
+                alert('جاري البحث عن: ' + query);
+            }
+        }
+    </script>
 </body>
 </html>
