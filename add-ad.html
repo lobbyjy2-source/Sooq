@@ -7,65 +7,82 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="bg-[#f8f9fa] font-sans text-gray-800">
-    <header class="bg-white border-b py-4">
-        <div class="container mx-auto px-4 flex items-center justify-between">
-            <a href="index.html" class="flex items-center gap-2">
-                <div class="bg-amber-500 text-white p-2 rounded-lg"><i class="fa-solid fa-bag-shopping"></i></div>
-                <span class="text-xl font-black text-gray-900">GRID SOOQ</span>
-            </a>
-            <a href="index.html" class="text-xs font-bold text-amber-600 hover:underline">إلغاء والعودة</a>
+<body class="bg-[#f8f9fa] font-sans text-gray-800 min-h-screen py-10 px-4">
+
+    <div class="max-w-xl mx-auto bg-white p-8 rounded-2xl shadow-sm border border-gray-200">
+        <div class="flex justify-between items-center mb-6 pb-4 border-b border-gray-100">
+            <h1 class="text-xl font-black text-gray-950"><i class="fa-solid fa-plus-circle text-amber-500 ml-2"></i> إضافة إعلان / منتج جديد</h1>
+            <a href="index.html" class="text-xs font-bold text-gray-500 hover:text-amber-600">الرئيسية</a>
         </div>
-    </header>
 
-    <div class="container mx-auto px-4 py-8 max-w-2xl">
-        <div class="bg-white rounded-2xl p-6 shadow-sm border">
-            <h2 class="text-xl font-bold mb-6 text-gray-900 border-b pb-3">+ نشر إعلان جديد</h2>
-            
-            <form onsubmit="saveAd(event)" class="space-y-4 text-xs">
+        <div id="statusMsg" class="hidden mb-4 p-3 rounded-xl text-xs font-bold text-center"></div>
+
+        <form id="adForm" class="space-y-4 text-xs">
+            <div>
+                <label class="block font-bold mb-1">عنوان المنتج أو الإعلان</label>
+                <input type="text" id="adTitle" placeholder="مثال: آيفون 15 برو ماكس نظيف جداً" required class="w-full border rounded-xl p-3 outline-none focus:border-amber-500">
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
                 <div>
-                    <label class="block font-bold mb-1">عنوان الإعلان</label>
-                    <input type="text" placeholder="مثال: سيارة تويوتا كامري 2023 ممتازة" required class="w-full border rounded-lg p-3 outline-none focus:border-amber-500">
+                    <label class="block font-bold mb-1">السعر ($ أو العملة)</label>
+                    <input type="number" id="adPrice" placeholder="500" required class="w-full border rounded-xl p-3 outline-none focus:border-amber-500">
                 </div>
-
-                <div class="grid grid-cols-2 gap-4">
-                    <div>
-                        <label class="block font-bold mb-1">القسم</label>
-                        <select required class="w-full border rounded-lg p-3 outline-none focus:border-amber-500 bg-white">
-                            <option value="electronics">الإلكترونيات</option>
-                            <option value="home">المنزل والمطبخ</option>
-                            <option value="fashion">الأزياء والملابس</option>
-                            <option value="mobiles">الجوالات والأجهزة</option>
-                            <option value="cars">السيارات وقطع الغيار</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block font-bold mb-1">السعر (ر.س)</label>
-                        <input type="number" placeholder="0.00" required class="w-full border rounded-lg p-3 outline-none focus:border-amber-500">
-                    </div>
-                </div>
-
                 <div>
-                    <label class="block font-bold mb-1">تفاصيل الإعلان</label>
-                    <textarea rows="4" placeholder="اكتب وصفاً دقيقاً للمنتج وحالته..." required class="w-full border rounded-lg p-3 outline-none focus:border-amber-500"></textarea>
+                    <label class="block font-bold mb-1">رابط الصورة (URL)</label>
+                    <input type="url" id="adImage" placeholder="https://example.com/image.jpg" required class="w-full border rounded-xl p-3 outline-none focus:border-amber-500">
                 </div>
+            </div>
 
-                <div>
-                    <label class="block font-bold mb-1">رابط صورة المنتج</label>
-                    <input type="url" placeholder="https://example.com/image.jpg" required class="w-full border rounded-lg p-3 outline-none focus:border-amber-500">
-                </div>
+            <div>
+                <label class="block font-bold mb-1">قصة المنتج أو تفاصيله (الوصف)</label>
+                <textarea id="adStory" rows="4" placeholder="اكتب قصة الإعلان أو تفاصيل حالته هنا..." required class="w-full border rounded-xl p-3 outline-none focus:border-amber-500"></textarea>
+            </div>
 
-                <button type="submit" class="w-full bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 rounded-xl transition">نشر الإعلان الآن</button>
-            </form>
-        </div>
+            <button type="submit" id="submitBtn" class="w-full bg-amber-500 hover:bg-amber-600 text-white font-bold py-3.5 rounded-xl transition shadow-sm text-sm">
+                نشر الإعلان الآن
+            </button>
+        </form>
     </div>
 
-    <script>
-        function saveAd(e) {
-            e.preventDefault();
-            alert('تم نشر إعلانك بنجاح وسوف يظهر في نتائج البحث مباشرة!');
-            window.location.href = 'index.html';
+    <!-- Firebase Realtime Database Logic -->
+    <script type="module">
+        import { db, ref, push, set } from "./firebase-config.js";
+
+        const statusMsg = document.getElementById('statusMsg');
+
+        function showStatus(msg, isError = false) {
+            statusMsg.className = `mb-4 p-3 rounded-xl text-xs font-bold text-center block ${isError ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700'}`;
+            statusMsg.innerText = msg;
         }
+
+        document.getElementById('adForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const title = document.getElementById('adTitle').value;
+            const price = document.getElementById('adPrice').value;
+            const image = document.getElementById('adImage').value;
+            const story = document.getElementById('adStory').value;
+
+            try {
+                // إرسال البيانات مباشرة إلى قاعدة بيانات Firebase
+                const adsRef = ref(db, 'ads');
+                const newAdRef = push(adsRef);
+                await set(newAdRef, {
+                    title,
+                    price,
+                    image,
+                    story,
+                    createdAt: Date.now()
+                });
+
+                showStatus("تم نشر الإعلان بنجاح في قاعدة البيانات!");
+                document.getElementById('adForm').reset();
+                setTimeout(() => window.location.href = 'index.html', 1500);
+            } catch (err) {
+                showStatus("حدث خطأ أثناء النشر: " + err.message, true);
+            }
+        });
     </script>
 </body>
 </html>
