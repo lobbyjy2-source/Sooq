@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GRID SOOQ - تسجيل الدخول</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-[#f8f9fa] font-sans text-gray-800 min-h-screen flex items-center justify-center py-10 px-4">
+
+    <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-200 w-full max-w-md">
+        <div class="text-center mb-6">
+            <a href="index.html" class="inline-flex items-center gap-2 mb-2">
+                <div class="bg-amber-500 text-white p-2.5 rounded-xl shadow-sm"><i class="fa-solid fa-bag-shopping text-xl"></i></div>
+                <span class="text-2xl font-black text-gray-900">GRID SOOQ</span>
+            </a>
+            <h2 class="text-lg font-bold text-gray-800 mt-2">تسجيل الدخول / إنشاء حساب</h2>
+        </div>
+
+        <div id="alertMsg" class="hidden mb-4 p-3 rounded-lg text-xs font-bold text-center"></div>
+
+        <!-- Google Login Button -->
+        <button id="googleBtn" type="button" class="w-full flex items-center justify-center gap-3 border border-gray-300 hover:bg-gray-50 text-gray-700 font-bold py-3 rounded-xl text-xs transition mb-4 shadow-sm">
+            <i class="fa-brands fa-google text-red-500 text-base"></i>
+            المتابعة باستخدام حساب Google
+        </button>
+
+        <div class="relative flex py-2 items-center mb-4">
+            <div class="flex-grow border-t border-gray-200"></div>
+            <span class="flex-shrink mx-4 text-gray-400 text-[11px]">أو بالبريد / الهاتف</span>
+            <div class="flex-grow border-t border-gray-200"></div>
+        </div>
+
+        <!-- Form Login/Register -->
+        <form id="authForm" class="space-y-4 text-xs">
+            <div>
+                <label class="block font-bold mb-1">البريد الإلكتروني أو رقم الهاتف</label>
+                <input type="text" id="userInput" placeholder="name@example.com أو 07XXXXXXXX" required class="w-full border rounded-xl p-3 outline-none focus:border-amber-500">
+            </div>
+
+            <div>
+                <label class="block font-bold mb-1">كلمة المرور</label>
+                <input type="password" id="passwordInput" placeholder="******" required minlength="6" class="w-full border rounded-xl p-3 outline-none focus:border-amber-500">
+            </div>
+
+            <div class="flex gap-2 pt-2">
+                <button type="submit" id="loginBtn" class="flex-1 bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 rounded-xl transition shadow-sm">
+                    تسجيل الدخول
+                </button>
+                <button type="button" id="registerBtn" class="flex-1 bg-gray-900 hover:bg-black text-white font-bold py-3 rounded-xl transition shadow-sm">
+                    حساب جديد
+                </button>
+            </div>
+        </form>
+
+        <div class="text-center mt-6 pt-4 border-t border-gray-100 text-xs text-gray-500">
+            <a href="index.html" class="text-amber-600 font-bold hover:underline">العودة إلى الصفحة الرئيسية</a>
+        </div>
+    </div>
+
+    <!-- Firebase Logic -->
+    <script type="module">
+        import { auth, googleProvider, signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup } from "./firebase-config.js";
+
+        const alertMsg = document.getElementById('alertMsg');
+
+        function showAlert(msg, isError = false) {
+            alertMsg.className = `mb-4 p-3 rounded-lg text-xs font-bold text-center block ${isError ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700'}`;
+            alertMsg.innerText = msg;
+        }
+
+        // تسجيل الدخول بـ Google
+        document.getElementById('googleBtn').addEventListener('click', async () => {
+            try {
+                const result = await signInWithPopup(auth, googleProvider);
+                showAlert(`أهلاً بك، ${result.user.displayName || result.user.email}`);
+                setTimeout(() => window.location.href = 'index.html', 1200);
+            } catch (err) {
+                showAlert("خطأ في تسجيل الدخول بواسطة Google: " + err.message, true);
+            }
+        });
+
+        // تسجيل الدخول بالبريد أو الهاتف
+        document.getElementById('loginBtn').addEventListener('click', async (e) => {
+            e.preventDefault();
+            const val = document.getElementById('userInput').value.trim();
+            const pass = document.getElementById('passwordInput').value;
+            const email = val.includes('@') ? val : `${val}@gridsooq.phone`;
+
+            try {
+                await signInWithEmailAndPassword(auth, email, pass);
+                showAlert("تم تسجيل الدخول بنجاح!");
+                setTimeout(() => window.location.href = 'index.html', 1200);
+            } catch (err) {
+                showAlert("فشل تسجيل الدخول: تأكد من البيانات", true);
+            }
+        });
+
+        // إنشاء حساب جديد بالبريد أو الهاتف
+        document.getElementById('registerBtn').addEventListener('click', async (e) => {
+            e.preventDefault();
+            const val = document.getElementById('userInput').value.trim();
+            const pass = document.getElementById('passwordInput').value;
+            const email = val.includes('@') ? val : `${val}@gridsooq.phone`;
+
+            try {
+                await createUserWithEmailAndPassword(auth, email, pass);
+                showAlert("تم إنشاء الحساب بنجاح!");
+                setTimeout(() => window.location.href = 'index.html', 1200);
+            } catch (err) {
+                showAlert("خطأ في إنشاء الحساب: " + err.message, true);
+            }
+        });
+    </script>
+</body>
+</html>
+
