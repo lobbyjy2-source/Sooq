@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GRID SOOQ - تسجيل الدخول</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-100 font-sans text-gray-800 min-h-screen flex flex-col justify-between">
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm py-4 border-b">
+        <div class="container mx-auto px-4 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-2">
+                <div class="bg-amber-500 text-white p-2 rounded-lg">
+                    <i class="fa-solid fa-bag-shopping text-xl"></i>
+                </div>
+                <span class="text-xl font-black text-gray-900">GRID SOOQ</span>
+            </a>
+            <a href="index.html" class="text-xs font-bold text-amber-600 hover:underline">
+                <i class="fa-solid fa-arrow-right ml-1"></i> العودة للرئيسية
+            </a>
+        </div>
+    </header>
+
+    <!-- Login Container -->
+    <div class="container mx-auto px-4 py-10 max-w-md my-auto">
+        <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+            
+            <div class="text-center mb-6">
+                <h1 class="text-2xl font-black text-gray-900">تسجيل الدخول</h1>
+                <p class="text-xs text-gray-400 mt-1">مرحباً بك مجدداً في Grid Sooq</p>
+            </div>
+
+            <form class="space-y-4 text-xs">
+                <div>
+                    <label class="block font-bold mb-1 text-gray-700">البريد الإلكتروني أو رقم الهاتف</label>
+                    <input type="text" placeholder="example@email.com" class="w-full p-3 border rounded-xl outline-none focus:border-amber-500">
+                </div>
+
+                <div>
+                    <label class="block font-bold mb-1 text-gray-700">كلمة المرور</label>
+                    <input type="password" placeholder="••••••••" class="w-full p-3 border rounded-xl outline-none focus:border-amber-500">
+                </div>
+
+                <div class="flex items-center justify-between text-[11px]">
+                    <label class="flex items-center gap-1.5 cursor-pointer text-gray-600">
+                        <input type="checkbox" class="accent-amber-500 rounded"> تذكرني
+                    </label>
+                    <a href="#" class="text-amber-600 hover:underline font-bold">نسيت كلمة المرور؟</a>
+                </div>
+
+                <button type="submit" class="w-full bg-amber-500 hover:bg-amber-600 text-white font-bold py-3.5 rounded-xl text-sm transition mt-2">
+                    دخول
+                </button>
+            </form>
+
+            <div class="text-center mt-6 pt-4 border-t text-xs text-gray-500">
+                ليس لديك حساب؟ <a href="#" class="text-amber-600 font-bold hover:underline">إنشاء حساب جديد</a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t py-4 text-center text-xs text-gray-400">
+        جميع الحقوق محفوظة &copy; 2026 Grid Sooq
+    </footer>
+
+</body>
+</html>
+
